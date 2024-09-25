@@ -44,6 +44,7 @@ public interface I_Conexion {
 
 	// stored procedures
 	String SP_OBTENER_TODOS_ORDENADORES = "call sp_obtener_todos_ordenadores();";
+	String SP_ELIMINAR_ORDENADOR = "call sp_eliminar_ordenador(?);";
 
 	// atributos de la mochila
 	String ATR_LISTA_ORDENADORES = "atr_lista_ordenadores";

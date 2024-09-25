@@ -2,38 +2,37 @@
 <%@page import="com.ipartek.modelo.I_Conexion"%>
 <%@page import="com.ipartek.modelo.dto.V_Ordenador"%>
 <%@page import="java.util.ArrayList"%>
-
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%
 List<V_Ordenador> listaOrdenadores = new ArrayList<V_Ordenador>();
 if (request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES) != null) {
-	listaOrdenadores = (List) request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES);
+    listaOrdenadores = (List) request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES);
 } else {
-	//TAREA PARA METER EN EL LOG
+    //TAREA PARA METER EN EL LOG
 }
 %>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>ORDENADORES</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/cuadricula_prod.css">
-
+<link
+	rel="stylesheet"
+	href="css/style.css">
+<link
+	rel="stylesheet"
+	href="css/cuadricula_prod.css">
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
 	<%@ include file="includes/cabecera.jsp"%>
-
-
 	<%@ include file="includes/menu.jsp"%>
-
-
 	<main>
 		<section class="cuadricula">
 			<table>
@@ -55,7 +54,6 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES) != null) {
 						<%
 						for (V_Ordenador elem : listaOrdenadores) {
 						%>
-
 						<tr>
 							<th scope="row"><%=elem.getId()%></th>
 							<td><%=elem.getNumeroSerie()%></td>
@@ -65,45 +63,53 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES) != null) {
 							<td><%=elem.getMarca()%></td>
 							<td><%=elem.getAnotaciones()%></td>
 							<td>
-								<form method="post" action="EliminarVideo" class="botoneraTabla">
-									<input type="hidden" name="p_id" value="">
-									<button type="submit"
+								<form
+									method="post"
+									action="EliminarOrdenador"
+									class="botoneraTabla">
+									<input
+										type="hidden"
+										name="p_id"
+										value="<%=elem.getId()%>">
+									<button
+										type="submit"
 										style="background: none; border: none; color: red; cursor: pointer;">
 										<i class="fas fa-trash-alt"></i>
 									</button>
 								</form>
-								<form method="post" action="AdminModificar"
+								<form
+									method="post"
+									action="AdminModificar"
 									class="botoneraTabla">
-									<input type="hidden" name="p_id" value="">
-									<button type="submit"
+									<input
+										type="hidden"
+										name="p_id"
+										value="">
+									<button
+										type="submit"
 										style="background: none; border: none; color: blue; cursor: pointer;">
 										<i class="fas fa-edit"></i>
 									</button>
 								</form>
 							</td>
 						</tr>
-
 						<%
 						}
 						%>
-
 					</div>
 				</tbody>
 				<tfoot>
 					<tr>
-						<th scope="row" colspan="2"># Ordenadores:</th>
+						<th
+							scope="row"
+							colspan="2"># Ordenadores:</th>
 						<td><%=listaOrdenadores.size()%></td>
 					</tr>
 				</tfoot>
 			</table>
 		</section>
-
 		<!-- 		<aside>parte de la pagina con el desglose</aside> -->
-
 	</main>
-
-
 	<%@ include file="includes/pie.jsp"%>
-
 </body>
 </html>
