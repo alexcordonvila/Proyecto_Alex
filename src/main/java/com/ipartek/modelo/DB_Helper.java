@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ipartek.I_Colores;
+import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
 
 public class DB_Helper implements I_Conexion, I_Metodos {
@@ -74,7 +75,7 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		while (rs.next()) {
 
 		    V_Ordenador ord = new V_Ordenador();
-		    System.out.println("DDDDDDDDDDDDDDDDDDDDDDD");
+
 		    ord.setId(rs.getInt(V_ORDENADORES_ID));
 		    ord.setNumeroSerie(rs.getString(V_ORDENADORES_NUMERO_SERIE));
 		    ord.setCapacidad(rs.getInt(V_ORDENADORES_CAPACIDAD));
@@ -122,6 +123,51 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    System.out.println(e.getMessage());
 
 	    return 0;
+	}
+    }
+
+    @Override
+    public List<V_Modelo> obtenerTodosModelos(Connection con) {
+	List<V_Modelo> lista = new ArrayList<V_Modelo>();
+	try {
+	    CallableStatement cStmt = con.prepareCall(SP_OBTENER_TODOS_MODELOS);
+
+	    boolean tieneSelect = cStmt.execute();
+
+	    if (tieneSelect == true) {
+
+		ResultSet rs = cStmt.getResultSet();
+
+		while (rs.next()) {
+
+		    V_Modelo modelo = new V_Modelo();
+
+		    modelo.setId(rs.getInt(V_MODELOS_ID));
+		    modelo.setModelo(rs.getString(V_MODELOS_MODELO));
+		    modelo.setFK_marca(rs.getInt(V_MODELOS_FK_MARCA));
+		    modelo.setMarca(rs.getString(V_MODELOS_MARCA));
+		    System.out.println("Modelo en java:"+modelo.getModelo());
+		    lista.add(modelo);
+		}
+
+		System.out.println("Lista de todos los modelos obtenida:");
+		System.out.println(lista);
+
+		return lista;
+
+	    } else {
+		System.out.println("No se pudo obtener una lista de modelos");
+		System.out.println("El Stored procedure no tiene un RESULTSET");
+
+		return new ArrayList<V_Modelo>();
+	    }
+
+	} catch (SQLException e) {
+	    System.out.println("ERROR DE BD: CONSULTA");
+	    System.out.println("Error al obtener la lista de todos los modelos");
+	    System.out.println(e.getMessage());
+
+	    return new ArrayList<V_Modelo>();
 	}
     }
 }

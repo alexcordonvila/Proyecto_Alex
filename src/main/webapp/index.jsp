@@ -34,7 +34,10 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES) != null) {
 	<%@ include file="includes/cabecera.jsp"%>
 	<%@ include file="includes/menu.jsp"%>
 	<main>
-		<section class="cuadricula">
+		<section>
+			<%@ include file="includes/insertar.jsp"%>
+		</section>
+		<section >
 			<table>
 				<caption>Lista de ordenadores</caption>
 				<thead>
