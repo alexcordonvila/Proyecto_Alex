@@ -1,19 +1,20 @@
 @charset "UTF-8";
 
 :root{
-	--principal:#4CAF50;
-	--secunadrio: #FFEB3B;
-	
+	--principal: #1A202C; /* Gris oscuro, moderno y sobrio */
+	--secundario: #38B2AC; /* Verde azulado, aporta frescura */
+	--acento: #F6AD55; /* Naranja suave para detalles y acentos */
+
 	--fuenteSans: 'Helvetica Neue', Arial, sans-serif;
 	--fuenteSerif: 'Georgia', 'Times New Roman', serif;
-	
+
 	--alturaCabecera: 120px;
 	--alturaPie: 40px;
 	--alturaMenu: 40px;
-	
-	--sizeH1:60px;
-	
-	--paddingGeneral:10px;
+
+	--sizeH1: 60px;
+
+	--paddingGeneral: 10px;
 }
 
 *{
@@ -26,7 +27,7 @@
         header h1 {
             margin: 0;
             font-size: 24px;
-            color: #333;
+            color: #38B2AC;
         }
         .user-info {
             display: flex;
@@ -60,7 +61,7 @@ header{
 	align-items: center;
     justify-content: space-between;
 	background-color: var(--principal);
-	color: var(--secunadrio);
+	color: var(--secundario);
 	width:100%;
 	height:  var(--alturaCabecera);	
 	margin-botton: 10px;
@@ -196,14 +197,14 @@ footer{
 	width:100%;
 	height:  var(--alturaPie);	
 	padding:var(--paddingGeneral);
-	color: var(--secunadrio);
+	color: var(--secundario);
 	
 }
 
 
 /*   menu    */
 nav{
-	background-color: orange;
+	background-color: var(--acento);
 }
 
 nav ul{
@@ -220,7 +221,7 @@ nav ul li{
 }
 
 nav ul li a{
-	background-color:yellow;
+	background-color:var(--secundario);
 	height:var(--alturaMenu);
 	width:180px;
 	
