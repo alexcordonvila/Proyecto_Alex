@@ -10,6 +10,12 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPLOADED) != null) {
 }
 %>
 <%
+int isOrdenadorDeleted= -1;
+if (request.getAttribute(I_Conexion.ATR_ORDENADOR_BORRADO) != null) {
+    isOrdenadorDeleted = (int) request.getAttribute(I_Conexion.ATR_ORDENADOR_BORRADO);
+}
+%>
+<%
 List<V_Modelo> listaModelos = new ArrayList<V_Modelo>();
 if (request.getAttribute(I_Conexion.ATR_LISTA_MODELOS) != null) {
 	listaModelos = (List) request.getAttribute(I_Conexion.ATR_LISTA_MODELOS);
@@ -55,6 +61,17 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 	<%
 	}
 	%>
+	<%
+	if (isOrdenadorDeleted == 1) {
+	%>
+	<div class="message success">Ordenador borrado correctamente</div>
+	<%
+	} else if (isOrdenadorUploaded == 0) {
+	%>
+	<div class="message error">Error al borrar el ordenador</div>
+	<%
+	}
+	%>
 	<form
 		name="ordenadorForm"
 		class="login"
@@ -86,7 +103,7 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 				<%
 				for (V_Modelo elem : listaModelos) {
 				%>
-				<option value=<%=elem.getModelo()%>>
+				<option value=<%=elem.getId()%>>
 					<%=elem.getModelo()%>
 				</option>
 				<%

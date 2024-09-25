@@ -35,28 +35,14 @@ public class Cargar extends HttpServlet implements I_Conexion {
 
 	DB_Helper db = new DB_Helper();
 	try (Connection con = db.conectar()) { // Usar try-with-resources
-	    List<V_Ordenador> listaOrdenadores = db.obtenerTodosOrdenadores(con);
-	    List<V_Modelo> listaModelos = db.obtenerTodosModelos(con);
-
-	    // Usar un Set para almacenar marcas únicas
-	    Set<String> marcasUnicas = new HashSet<>();
-
-	    for (V_Modelo v_Modelo : listaModelos) {
-		String marca = v_Modelo.getMarca();
-		marcasUnicas.add(marca); // Agregar directamente al Set
-		// Solo imprimir si es necesario
-		System.out.println("Marca: " + marca);
-	    }
-
-	    // Convertir el Set a una lista
-	    List<String> listaMarcas = marcasUnicas.stream().collect(Collectors.toList());
-	    System.out.println("Lista Sin Duplicados: " + listaMarcas);
+	    List<V_Ordenador> listaOrdenadores = Helper.obtenerListaOrdenadores(db, con);
+	    List<V_Modelo> listaModelos = Helper.obtenerListaModelos(db, con);
+	    List<String> listaMarcas = Helper.obtenerMarcasUnicas(listaModelos);
 
 	    // Configurar los atributos de la solicitud
 	    request.setAttribute(ATR_LISTA_ORDENADORES, listaOrdenadores);
 	    request.setAttribute(ATR_LISTA_MODELOS, listaModelos);
 	    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
-	    System.out.println(listaModelos);
 
 	    // Redirigir a la JSP
 	    request.getRequestDispatcher(JSP_TODOS).forward(request, response);

@@ -1,7 +1,5 @@
 package com.ipartek.modelo;
 
-import java.sql.Connection;
-
 public interface I_Conexion {
 
     // Constantes para BD
@@ -32,8 +30,7 @@ public interface I_Conexion {
     String V_ORDENADORES_ANOTACIONES = "anotaciones";
     String V_ORDENADORES_MODELO = "modelo";
     String V_ORDENADORES_MARCA = "marca";
-    
- 
+
     String V_MODELOS_ID = "id";
     String V_MODELOS_MODELO = "modelo";
     String V_MODELOS_MARCA = "marca";
@@ -51,12 +48,15 @@ public interface I_Conexion {
     // stored procedures
     String SP_OBTENER_TODOS_ORDENADORES = "call sp_obtener_todos_ordenadores();";
     String SP_ELIMINAR_ORDENADOR = "call sp_eliminar_ordenador(?);";
-    String SP_OBTENER_TODOS_MODELOS = "call sp_obtener_todos_modelos()";
+    String SP_OBTENER_TODOS_MODELOS = "call sp_obtener_todos_modelos();";
+    String SP_INSERTAR_ORDENADOR = "call sp_insertar_ordenador(?,?,?,?,?);";
+    
 
     // atributos de la mochila
     String ATR_LISTA_ORDENADORES = "atr_lista_ordenadores";
     String ATR_LISTA_MODELOS = "atr_lista_modelos";
     String ATR_ORDENADOR_UPLOADED = "atr_ordenador_uploaded";
+    String ATR_ORDENADOR_BORRADO = "atr_ordenador_deleted";
     String ATR_LISTA_MARCAS = "atr_lista_marcas";
 
 }

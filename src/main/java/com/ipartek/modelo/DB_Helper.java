@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ipartek.I_Colores;
+import com.ipartek.modelo.dto.Ordenador;
 import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
 
@@ -146,7 +147,7 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		    modelo.setModelo(rs.getString(V_MODELOS_MODELO));
 		    modelo.setFK_marca(rs.getInt(V_MODELOS_FK_MARCA));
 		    modelo.setMarca(rs.getString(V_MODELOS_MARCA));
-		    System.out.println("Modelo en java:"+modelo.getModelo());
+		    System.out.println("Modelo en java:" + modelo.getModelo());
 		    lista.add(modelo);
 		}
 
@@ -168,6 +169,30 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    System.out.println(e.getMessage());
 
 	    return new ArrayList<V_Modelo>();
+	}
+    }
+
+    @Override
+    public int insertarOrdenador(Connection con, Ordenador ord) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_INSERTAR_ORDENADOR);
+	
+	    cStmt.setString(1, ord.getNumeroSerie());
+	    cStmt.setInt(2, ord.getCapacidad());
+	    cStmt.setInt(3, ord.getRam());
+	    cStmt.setString(4, ord.getAnotaciones());
+	    cStmt.setInt(5, ord.getFk_modelo());
+	    
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: INSERT");
+	    System.out.println("Error al añadir el ordenador");
+	    System.out.println(e.getMessage());
+
+	    return 0;
 	}
     }
 }
