@@ -1,0 +1,252 @@
+@charset "UTF-8";
+
+:root{
+	--principal:#4CAF50;
+	--secunadrio: #FFEB3B;
+	
+	--fuenteSans: 'Helvetica Neue', Arial, sans-serif;
+	--fuenteSerif: 'Georgia', 'Times New Roman', serif;
+	
+	--alturaCabecera: 120px;
+	--alturaPie: 40px;
+	--alturaMenu: 40px;
+	
+	--sizeH1:60px;
+	
+	--paddingGeneral:10px;
+}
+
+*{
+	margin:0px;
+	padding:0px;
+	
+	font-family: var(--fuenteSans);
+}
+  
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            padding: var(--paddingGeneral);
+        }
+        .user-info i {
+            font-size: 20px;
+            color: #007bff;
+            margin-right: 10px;
+        }
+        .user-info span {
+            margin-right: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+        .logout-button {
+            background: none;
+            border: none;
+            color: blue;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .logout-button:hover {
+            text-decoration: underline;
+        }
+  
+/*   cabecera    */
+header{
+	
+	align-items: center;
+    justify-content: space-between;
+	background-color: var(--principal);
+	color: var(--secunadrio);
+	width:100%;
+	height:  var(--alturaCabecera);	
+	margin-botton: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	
+}
+
+
+/* Estilo general para la tabla */
+table {
+	 overflow-x: auto; /* Scroll horizontal si es necesario */
+    overflow-y: auto; /* Scroll vertical si es necesario */
+    width: 100%;
+    max-width: 600px; /* Ajusta el ancho máximo para que sea consistente */
+     max-height: 400px; /* Ajusta según necesites */
+    margin: 20px auto; /* Centra la tabla y añade espacio alrededor */
+    border-collapse: separate; /* Permite bordes redondeados */
+    border-spacing: 0;
+    background-color: #f9f9f9; /* Fondo de la tabla */
+    border-collapse: separate; /* Permite bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    border-radius: 12px; /* Bordes redondeados */
+    overflow: hidden; /* Asegura que los bordes redondeados se muestren */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Consistencia en la tipografía */
+    
+     border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilo para las celdas de la cabecera */
+table th {
+    background-color: #e0e0e0; /* Fondo gris claro para la cabecera */
+    color: #333; /* Texto gris oscuro */
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 600;
+    font-size: 14px;
+    
+}
+
+/* Estilo para las celdas de la tabla */
+table td {
+    padding: 12px 15px;
+    color: #555; /* Texto gris */
+    font-size: 14px;
+    border-bottom: 1px solid #ddd; /* Líneas divisorias sutiles */
+}
+
+/* Estilo para las filas pares */
+table tr:nth-child(even) {
+    background-color: #f3f3f3; /* Fondo gris claro para filas pares */
+}
+
+/* Estilo al pasar el cursor sobre una fila */
+table tr:hover {
+    background-color: #e0e0e0; /* Cambio de color al pasar el mouse */
+}
+
+/* Quitar el borde inferior de la última fila */
+table tr:last-child td {
+    border-bottom: none;
+}
+table.botoneraTabla {
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+table.scrollit {
+    overflow:scroll;
+    height:100px;
+}
+
+/*FORMULARIO*/
+
+/* Estilo general para el formulario */
+form.login {
+    width: 100%;
+    max-width: 600px;
+    margin: 33px auto 0 auto; /* Espacio superior de 33px y centrado horizontal */
+    padding: 20px;
+    background-color: #f9f9f9; /* Fondo claro */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    font-family: var(--fuenteSans);	
+}
+
+/* Estilo para las etiquetas */
+form.login label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333; /* Texto gris oscuro */
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Estilo para los campos de entrada */
+form.login input[type="text"],
+form.login input[type="tipo"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
+    font-size: 14px;
+    color: #555; /* Texto gris */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+/* Estilo para el botón */
+form.login button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007aff; /* Azul estilo Apple */
+    color: #fff; /* Texto blanco */
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para el botón */
+form.login button[type="submit"]:hover {
+    background-color: #005bb5; /* Azul más oscuro al pasar el mouse */
+}
+footer{
+	
+	background-color: var(--principal);
+	width:100%;
+	height:  var(--alturaPie);	
+	padding:var(--paddingGeneral);
+	color: var(--secunadrio);
+	
+}
+
+
+/*   menu    */
+nav{
+	background-color: orange;
+}
+
+nav ul{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+nav ul li{
+	background-color:cyan;
+	list-style-type: none;
+	
+}
+
+nav ul li a{
+	background-color:yellow;
+	height:var(--alturaMenu);
+	width:180px;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+  .message {
+        margin-top: 20px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+    .error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }

@@ -1,0 +1,47 @@
+@charset "ISO-8859-1";
+/*CSS para la cuadricula de productos*/
+.cuadricula {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 10px 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . .";
+}
+/*CSS para la caja de productos*/
+.producto {  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 10px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "nombre precio"
+    "imagen imagen"
+    "botonera botonera";
+    background-color: pink;
+    padding: var(--paddingGeneral);
+}
+
+.nombre { grid-area: nombre; 
+
+background-color: yellow;
+font-size: 12px;
+
+}
+
+.precio { grid-area: precio; 
+	background-color: lime;
+	font-size: 12px;
+	text-align: right;
+}
+.precio h3 { 
+	font-size: 12px;
+}
+.imagen { grid-area: imagen; }
+
+.botonera { grid-area: botonera; }
+
+.nombre h2{
+	font-size: 12px;
+	font-family: var(--fuenteSerif);
+}
