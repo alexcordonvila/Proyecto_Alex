@@ -14,5 +14,5 @@ public interface I_Metodos {
 	void desconectar(Connection con);
 	
 	public List<V_Ordenador> obtenerTodosOrdenadores(Connection con);
-
+	public int eliminarOrdenador(Connection con, int id);
 }

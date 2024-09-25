@@ -1,0 +1,10 @@
+INSERT INTO modelos (id, modelo, FK_marca) VALUES (1, 'Inspiron 15', 1);
+INSERT INTO modelos (id, modelo, FK_marca) VALUES (2, 'Pavilion 14', 2);
+INSERT INTO modelos (id, modelo, FK_marca) VALUES (3, 'ThinkPad X1', 3);
+INSERT INTO modelos (id, modelo, FK_marca) VALUES (4, 'MacBook Air', 4);
+INSERT INTO modelos (id, modelo, FK_marca) VALUES (5, 'EliteBook 850', 2);
+INSERT INTO ordenadores (id, numeroSerie, capacidad, ram, anotaciones, FK_modelo) VALUES (1, 'ABC123456', 512, 16, 'Pantalla rota', 1);
+INSERT INTO ordenadores (id, numeroSerie, capacidad, ram, anotaciones, FK_modelo) VALUES (2, 'DEF987654', 256, 8, 'Batería agotada', 2);
+INSERT INTO ordenadores (id, numeroSerie, capacidad, ram, anotaciones, FK_modelo) VALUES (3, 'GHI654321', 1024, 32, 'Teclado defectuoso', 3);
+INSERT INTO ordenadores (id, numeroSerie, capacidad, ram, anotaciones, FK_modelo) VALUES (4, 'JKL111222', 256, 8, 'Actualización de software requerida', 4);
+INSERT INTO ordenadores (id, numeroSerie, capacidad, ram, anotaciones, FK_modelo) VALUES (5, 'MNO333444', 512, 16, 'Problemas de encendido', 5);
