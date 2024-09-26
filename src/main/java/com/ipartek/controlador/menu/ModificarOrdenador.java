@@ -18,11 +18,14 @@ import com.ipartek.modelo.dto.Ordenador;
 import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
 
-@WebServlet("/InsertarOrdenador")
-public class InsertarOrdenador extends HttpServlet implements I_Conexion {
+/**
+ * Servlet implementation class ModificarOrdenador
+ */
+@WebServlet("/ModificarOrdenador")
+public class ModificarOrdenador extends HttpServlet implements I_Conexion {
     private static final long serialVersionUID = 1L;
 
-    public InsertarOrdenador() {
+    public ModificarOrdenador() {
 	super();
 	// TODO Auto-generated constructor stub
     }
@@ -30,7 +33,7 @@ public class InsertarOrdenador extends HttpServlet implements I_Conexion {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 	// 1- Recuperamos datos del JSP:
-
+	int p_id = Integer.parseInt(request.getParameter("p_id"));
 	String p_numeroSerie = "";
 	if (request.getParameter("p_numeroSerie") != null) {
 	    p_numeroSerie = request.getParameter("p_numeroSerie");
@@ -70,11 +73,13 @@ public class InsertarOrdenador extends HttpServlet implements I_Conexion {
 	    }
 	}
 
-	Ordenador ordenador = new Ordenador(0, p_numeroSerie, p_capacidad, p_ram, p_anotaciones, p_modelo);
+	Ordenador ordenador = new Ordenador(p_id, p_numeroSerie, p_capacidad, p_ram, p_anotaciones, p_modelo);
+
 	DB_Helper db = new DB_Helper();
 
-	try (Connection con = db.conectar()) { // Usar try-with-resources
-	    int insertar = db.insertarOrdenador(con, ordenador);
+	try (Connection con = db.conectar()) { 
+
+	    int modificar = Helper.modificarOrdenador(db, con, ordenador);
 	    List<V_Ordenador> listaOrdenadores = Helper.obtenerListaOrdenadores(db, con);
 	    List<V_Modelo> listaModelos = Helper.obtenerListaModelos(db, con);
 	    List<String> listaMarcas = Helper.obtenerMarcasUnicas(listaModelos);
@@ -82,10 +87,10 @@ public class InsertarOrdenador extends HttpServlet implements I_Conexion {
 	    db.desconectar(con);
 
 	    request.setAttribute(ATR_LISTA_ORDENADORES, listaOrdenadores);
-	    request.setAttribute(ATR_ORDENADOR_UPLOADED, insertar);
+	    request.setAttribute(ATR_ORDENADOR_UPDATED, modificar);
 	    request.setAttribute(ATR_LISTA_MODELOS, listaModelos);
 	    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
-	    
+
 	    request.getRequestDispatcher(JSP_TODOS).forward(request, response);
 
 	} catch (SQLException e) {
@@ -96,7 +101,7 @@ public class InsertarOrdenador extends HttpServlet implements I_Conexion {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-
+	// TODO Auto-generated method stub
 	doGet(request, response);
     }
 

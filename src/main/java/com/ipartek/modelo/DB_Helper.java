@@ -177,13 +177,13 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	try {
 
 	    CallableStatement cStmt = con.prepareCall(SP_INSERTAR_ORDENADOR);
-	
+
 	    cStmt.setString(1, ord.getNumeroSerie());
 	    cStmt.setInt(2, ord.getCapacidad());
 	    cStmt.setInt(3, ord.getRam());
 	    cStmt.setString(4, ord.getAnotaciones());
 	    cStmt.setInt(5, ord.getFk_modelo());
-	    
+
 	    return cStmt.executeUpdate();
 
 	} catch (SQLException e) {
@@ -193,6 +193,73 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    System.out.println(e.getMessage());
 
 	    return 0;
+	}
+    }
+
+    @Override
+    public int modificarOrdenador(Connection con, Ordenador ord) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_MODIFICAR_ORDENADOR);
+
+	    cStmt.setInt(1, ord.getId());
+	    cStmt.setString(2, ord.getNumeroSerie());
+	    cStmt.setInt(3, ord.getCapacidad());
+	    cStmt.setInt(4, ord.getRam());
+	    cStmt.setString(5, ord.getAnotaciones());
+	    cStmt.setInt(6, ord.getFk_modelo());
+
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: UPDATE");
+	    System.out.println("Error al modificar el ordenador con id="+ord.getId());
+	    System.out.println(e.getMessage());
+
+	    return 0;
+	}
+    }
+
+    @Override
+    public V_Ordenador obtenerOrdenador(Connection con, int id) {
+	V_Ordenador v_ordenador = new V_Ordenador();
+	try {
+	    CallableStatement cStmt = con.prepareCall(SP_OBTENER_ORDENADOR_POR_ID);
+	    cStmt.setInt(1, id);
+	    boolean tieneSelect = cStmt.execute();
+
+	    if (tieneSelect == true) {
+		ResultSet rs = cStmt.getResultSet();
+
+		while (rs.next()) {
+		    v_ordenador.setId(rs.getInt(V_ORDENADORES_ID));
+		    v_ordenador.setNumeroSerie(rs.getString(V_ORDENADORES_NUMERO_SERIE));
+		    v_ordenador.setCapacidad(rs.getInt(V_ORDENADORES_CAPACIDAD));
+		    v_ordenador.setRam(rs.getInt(V_ORDENADORES_RAM));
+		    v_ordenador.setAnotaciones(rs.getString(V_ORDENADORES_ANOTACIONES));
+		    v_ordenador.setModelo(rs.getString(V_ORDENADORES_MODELO));
+		    v_ordenador.setMarca(rs.getString(V_ORDENADORES_MARCA));
+		}
+
+		System.out.println("Ordenadores obtenido:");
+		System.out.println(v_ordenador);
+
+		return v_ordenador;
+
+	    } else {
+		System.out.println("No se pudo obtener el ordenador con id:"+id);
+		System.out.println("El Stored procedure no tiene un RESULTSET");
+
+		return v_ordenador;
+	    }
+
+	} catch (SQLException e) {
+	    System.out.println("ERROR DE BD: CONSULTA");
+	    System.out.println("Error al obtener el ordenador con id:"+id);
+	    System.out.println(e.getMessage());
+
+	    return v_ordenador;
 	}
     }
 }
