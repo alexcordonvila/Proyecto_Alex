@@ -59,9 +59,12 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR) != null) {
 		name="ordenadorForm"
 		class="login"
 		method="post"
-		action="InsertarOrdenador"
+		action="ModificarOrdenador"
 		onsubmit="return validateForm()">
 		<H3>Modificar ordenador</H3>
+		<label for="p_id">ID</label>
+		<input type="tipo" size="tamaño" name="p_id" placeholder="Altura" readonly
+			value="<%=objetoOrdenador.getId() %>"> </input>
 		</select> <label>Número de serie*</label> <input
 			required
 			type="text"
@@ -131,6 +134,9 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR) != null) {
 			name="p_anotaciones"
 			value="<%=objetoOrdenador.getAnotaciones()%>"
 			placeholder="Anotaciones"> <br>
+			
+			
+			
 			<button type="submit">
 				Modificar <i class="fa fa-edit"></i>
 			</button>

@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.ipartek.modelo.DB_Helper;
+import com.ipartek.modelo.dto.Ordenador;
 import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
 
@@ -23,6 +24,10 @@ public class Helper {
     public static V_Ordenador obtenerOrdenador(DB_Helper db, Connection con, int id) throws SQLException {
    	return db.obtenerOrdenador(con,id);
        }
+    public static int modificarOrdenador(DB_Helper db,Connection con, Ordenador ordenador) {
+	
+	return db.modificarOrdenador(con, ordenador);
+    }
     public static List<String> obtenerMarcasUnicas(List<V_Modelo> listaModelos) {
 	Set<String> marcasUnicas = new HashSet<>();
 

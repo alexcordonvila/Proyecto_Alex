@@ -213,8 +213,8 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 
 	} catch (SQLException e) {
 
-	    System.out.println("ERROR DE BD: INSERT");
-	    System.out.println("Error al añadir el ordenador");
+	    System.out.println("ERROR DE BD: UPDATE");
+	    System.out.println("Error al modificar el ordenador con id="+ord.getId());
 	    System.out.println(e.getMessage());
 
 	    return 0;

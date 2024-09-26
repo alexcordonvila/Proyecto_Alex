@@ -113,7 +113,7 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 			required
 			type="text"
 			name="p_capacidad"
-			placeholder="Ram"> <br> <label>Ram*</label> <input
+			placeholder="Capacidad"> <br> <label>Ram*</label> <input
 			required
 			type="text"
 			name="p_ram"
