@@ -32,6 +32,10 @@ public class Helper {
 	
 	return db.modificarOrdenador(con, ordenador);
     }
+    public static int eliminarMarca(DB_Helper db,Connection con, int id) {
+	
+  	return db.eliminarMarca(con, id);
+      }
     public static List<String> obtenerMarcasUnicas(List<V_Modelo> listaModelos) {
 	Set<String> marcasUnicas = new HashSet<>();
 

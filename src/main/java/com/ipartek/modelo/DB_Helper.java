@@ -325,4 +325,21 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	}
     }
 
+    public int eliminarMarca(Connection con, int id) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_ELIMINAR_MARCA);
+	    cStmt.setInt(1, id);
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: DELETE");
+	    System.out.println("Error al eliminar la marca");
+	    System.out.println(e.getMessage());
+
+	    return 0;
+	}
+    }
+
 }

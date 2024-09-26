@@ -29,4 +29,6 @@ public interface I_Metodos {
     public List<Marca> obtenerTodasMarcas(Connection con);
 
     int insertarMarca(Connection con, Marca marca);
+
+    int eliminarMarca(Connection con, int id);
 }
