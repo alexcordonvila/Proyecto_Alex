@@ -20,7 +20,9 @@ public class Helper {
     public static List<V_Modelo> obtenerListaModelos(DB_Helper db, Connection con) throws SQLException {
 	return db.obtenerTodosModelos(con);
     }
-
+    public static V_Ordenador obtenerOrdenador(DB_Helper db, Connection con, int id) throws SQLException {
+   	return db.obtenerOrdenador(con,id);
+       }
     public static List<String> obtenerMarcasUnicas(List<V_Modelo> listaModelos) {
 	Set<String> marcasUnicas = new HashSet<>();
 

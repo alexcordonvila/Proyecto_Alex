@@ -12,6 +12,7 @@ public interface I_Conexion {
     // Archivos JSP
     String JSP_TODOS = "index.jsp";
     String JSP_ADMIN = "admin.jsp";
+    String JSP_MODIFICAR = "modificar.jsp";
 
     // Tablas de la BD
     String TABLA_ORDENADORES = "ordenadores";
@@ -50,13 +51,16 @@ public interface I_Conexion {
     String SP_ELIMINAR_ORDENADOR = "call sp_eliminar_ordenador(?);";
     String SP_OBTENER_TODOS_MODELOS = "call sp_obtener_todos_modelos();";
     String SP_INSERTAR_ORDENADOR = "call sp_insertar_ordenador(?,?,?,?,?);";
-    
+    String SP_MODIFICAR_ORDENADOR = "call sp_modificar_ordenador(?,?,?,?,?,?);";
+    String SP_OBTENER_ORDENADOR_POR_ID = "call sp_obtener_ordenador_por_id(?)";
 
     // atributos de la mochila
     String ATR_LISTA_ORDENADORES = "atr_lista_ordenadores";
     String ATR_LISTA_MODELOS = "atr_lista_modelos";
     String ATR_ORDENADOR_UPLOADED = "atr_ordenador_uploaded";
     String ATR_ORDENADOR_BORRADO = "atr_ordenador_deleted";
+    String ATR_ORDENADOR_UPDATED = "atr_ordenador_updated";
     String ATR_LISTA_MARCAS = "atr_lista_marcas";
+    String ATR_ORDENADOR = "atr_ordenador";
 
 }

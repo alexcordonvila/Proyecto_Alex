@@ -15,6 +15,12 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES) != null) {
     //TAREA PARA METER EN EL LOG
 }
 %>
+<%
+int isOrdenadorUpdated = -1;
+if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPDATED) != null) {
+    isOrdenadorUpdated = (int) request.getAttribute(I_Conexion.ATR_ORDENADOR_UPDATED);
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,10 +40,21 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES) != null) {
 	<%@ include file="includes/cabecera.jsp"%>
 	<%@ include file="includes/menu.jsp"%>
 	<main>
+		<%
+		if (isOrdenadorUpdated == 1) {
+		%>
+		<div class="message success">Ordenador modificado correctamente</div>
+		<%
+		} else if (isOrdenadorUpdated == 0) {
+		%>
+		<div class="message error">Error al insertar el ordenador</div>
+		<%
+		}
+		%>
 		<section>
 			<%@ include file="includes/insertar.jsp"%>
 		</section>
-		<section >
+		<section>
 			<table>
 				<caption>Lista de ordenadores</caption>
 				<thead>
@@ -87,7 +104,7 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES) != null) {
 									<input
 										type="hidden"
 										name="p_id"
-										value="">
+										value="<%=elem.getId()%>">
 									<button
 										type="submit"
 										style="background: none; border: none; color: blue; cursor: pointer;">
@@ -111,7 +128,6 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_ORDENADORES) != null) {
 				</tfoot>
 			</table>
 		</section>
-		<!-- 		<aside>parte de la pagina con el desglose</aside> -->
 	</main>
 	<%@ include file="includes/pie.jsp"%>
 </body>
