@@ -172,6 +172,7 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    return new ArrayList<V_Modelo>();
 	}
     }
+
     @Override
     public List<Marca> obtenerTodasMarcas(Connection con) {
 	List<Marca> lista = new ArrayList<Marca>();
@@ -214,6 +215,7 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    return new ArrayList<Marca>();
 	}
     }
+
     @Override
     public int insertarOrdenador(Connection con, Ordenador ord) {
 	try {
@@ -239,6 +241,24 @@ public class DB_Helper implements I_Conexion, I_Metodos {
     }
 
     @Override
+    public int insertarMarca(Connection con, Marca marca) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_INSERTAR_MARCA);
+	    cStmt.setString(1, marca.getMarca());
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: INSERT");
+	    System.out.println("Error al añadir la Marca");
+	    System.out.println(e.getMessage());
+
+	    return 0;
+	}
+    }
+
+    @Override
     public int modificarOrdenador(Connection con, Ordenador ord) {
 	try {
 
@@ -256,7 +276,7 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	} catch (SQLException e) {
 
 	    System.out.println("ERROR DE BD: UPDATE");
-	    System.out.println("Error al modificar el ordenador con id="+ord.getId());
+	    System.out.println("Error al modificar el ordenador con id=" + ord.getId());
 	    System.out.println(e.getMessage());
 
 	    return 0;
@@ -290,7 +310,7 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		return v_ordenador;
 
 	    } else {
-		System.out.println("No se pudo obtener el ordenador con id:"+id);
+		System.out.println("No se pudo obtener el ordenador con id:" + id);
 		System.out.println("El Stored procedure no tiene un RESULTSET");
 
 		return v_ordenador;
@@ -298,12 +318,11 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 
 	} catch (SQLException e) {
 	    System.out.println("ERROR DE BD: CONSULTA");
-	    System.out.println("Error al obtener el ordenador con id:"+id);
+	    System.out.println("Error al obtener el ordenador con id:" + id);
 	    System.out.println(e.getMessage());
 
 	    return v_ordenador;
 	}
     }
 
-   
 }

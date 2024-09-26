@@ -27,4 +27,6 @@ public interface I_Metodos {
     public List<V_Modelo> obtenerTodosModelos(Connection con);
 
     public List<Marca> obtenerTodasMarcas(Connection con);
+
+    int insertarMarca(Connection con, Marca marca);
 }

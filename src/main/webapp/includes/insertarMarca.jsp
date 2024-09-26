@@ -4,8 +4,8 @@
 <%@page import="com.ipartek.modelo.dto.V_Modelo"%>
 <%
 int isMarcaUploaded = -1;
-if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPLOADED) != null) {
-	isMarcaUploaded = (int) request.getAttribute(I_Conexion.ATR_ORDENADOR_UPLOADED);
+if (request.getAttribute(I_Conexion.ATR_MARCA_UPLOADED) != null) {
+	isMarcaUploaded = (int) request.getAttribute(I_Conexion.ATR_MARCA_UPLOADED);
 }
 %>
 <!DOCTYPE html>
@@ -42,13 +42,13 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPLOADED) != null) {
 		name="ordenadorForm"
 		class="login"
 		method="post"
-		action="InsertarOrdenador"
+		action="InsertarMarca"
 		onsubmit="return validateForm()">
 		<H3>Añadir Marca</H3>
 		</select> <label>Nombre de marca*</label> <input
 			required
 			type="text"
-			name="p_numeroSerie"
+			name="p_marca"
 			placeholder="Nombre de marca"> <br>
 		<button type="submit">
 			Insertar marca <i class="fa fa-upload"></i>
