@@ -53,7 +53,8 @@ public interface I_Conexion {
     String SP_INSERTAR_ORDENADOR = "call sp_insertar_ordenador(?,?,?,?,?);";
     String SP_MODIFICAR_ORDENADOR = "call sp_modificar_ordenador(?,?,?,?,?,?);";
     String SP_OBTENER_ORDENADOR_POR_ID = "call sp_obtener_ordenador_por_id(?)";
-
+    String SP_OBTENER_TODAS_MARCAS = "call sp_obtener_todas_marcas()";
+    
     // atributos de la mochila
     String ATR_LISTA_ORDENADORES = "atr_lista_ordenadores";
     String ATR_LISTA_MODELOS = "atr_lista_modelos";
@@ -62,5 +63,6 @@ public interface I_Conexion {
     String ATR_ORDENADOR_UPDATED = "atr_ordenador_updated";
     String ATR_LISTA_MARCAS = "atr_lista_marcas";
     String ATR_ORDENADOR = "atr_ordenador";
+    String ATR_LISTA_MARCAS_UNICAS = "atr_lista_marcas_unicas";
 
 }

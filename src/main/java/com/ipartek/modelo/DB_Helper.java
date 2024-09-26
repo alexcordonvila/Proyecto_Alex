@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ipartek.I_Colores;
+import com.ipartek.modelo.dto.Marca;
 import com.ipartek.modelo.dto.Ordenador;
 import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
@@ -171,7 +172,48 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    return new ArrayList<V_Modelo>();
 	}
     }
+    @Override
+    public List<Marca> obtenerTodasMarcas(Connection con) {
+	List<Marca> lista = new ArrayList<Marca>();
+	try {
+	    CallableStatement cStmt = con.prepareCall(SP_OBTENER_TODAS_MARCAS);
 
+	    boolean tieneSelect = cStmt.execute();
+
+	    if (tieneSelect == true) {
+
+		ResultSet rs = cStmt.getResultSet();
+
+		while (rs.next()) {
+
+		    Marca marca = new Marca();
+
+		    marca.setId(rs.getInt(MARCAS_ID));
+		    marca.setMarca(rs.getString(MARCAS_MARCA));
+
+		    lista.add(marca);
+		}
+
+		System.out.println("Lista de todas las marcas obtenida:");
+		System.out.println(lista);
+
+		return lista;
+
+	    } else {
+		System.out.println("No se pudo obtener una lista de marcas");
+		System.out.println("El Stored procedure no tiene un RESULTSET");
+
+		return new ArrayList<Marca>();
+	    }
+
+	} catch (SQLException e) {
+	    System.out.println("ERROR DE BD: CONSULTA");
+	    System.out.println("Error al obtener la lista de todas las marcas");
+	    System.out.println(e.getMessage());
+
+	    return new ArrayList<Marca>();
+	}
+    }
     @Override
     public int insertarOrdenador(Connection con, Ordenador ord) {
 	try {
@@ -262,4 +304,6 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    return v_ordenador;
 	}
     }
+
+   
 }
