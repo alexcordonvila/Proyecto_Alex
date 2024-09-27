@@ -17,7 +17,7 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_NUMEROSERIE) != null) {
     //TAREA PARA METER EN EL LOG
 }
 %>
-<label for="myInput">Buscar por número de serie:</label>
+
 <%
 if (isfilterOn) {
 %>
@@ -27,6 +27,7 @@ if (isfilterOn) {
 	method="post"
 	action="MenuTodos"
 	onsubmit="return validateForm()">
+	<label for="myInput">Buscar por número de serie:</label>
 	<div class="input-group">
 		<input
 			type="text"
@@ -51,6 +52,7 @@ if (isfilterOn) {
 		method="post"
 		action="FiltrarOrdenadores"
 		onsubmit="return validateForm()">
+		<label for="myInput">Buscar por número de serie:</label>
 		<div class="input-group">
 			<input
 				type="text"

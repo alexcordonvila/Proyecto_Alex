@@ -52,88 +52,87 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPDATED) != null) {
 		}
 		%>
 		<div class="adminContainer">
-		<section>
-			<%@ include file="includes/insertar.jsp"%>
-		</section>
-
-		<section>
-		<%@ include file="includes/filtroOrdenadores.jsp"%>
-			<div style="overflow-y: auto; max-height: 400px;">
-			<table>
-				<caption>Lista de ordenadores</caption>
-				<thead>
-					<tr>
-						<th scope="col"><h3>Id</h3></th>
-						<th scope="col"><h3>Numero de serie</h3></th>
-						<th scope="col"><h3>RAM</h3></th>
-						<th scope="col"><h3>Capacidad</h3></th>
-						<th scope="col"><h3>Modelo</h3></th>
-						<th scope="col"><h3>Marca</h3></th>
-						<th scope="col"><h3>Anotaciones</h3></th>
-						<th scope="col"><h3>Admin</h3></th>
-					</tr>
-				</thead>
-				<tbody>
-					<div>
-						<%
-						for (V_Ordenador elem : listaOrdenadores) {
-						%>
-						<tr>
-							<th scope="row"><%=elem.getId()%></th>
-							<td><%=elem.getNumeroSerie()%></td>
-							<td><%=elem.getRam()%></td>
-							<td><%=elem.getCapacidad()%></td>
-							<td><%=elem.getModelo()%></td>
-							<td><%=elem.getMarca()%></td>
-							<td><%=elem.getAnotaciones()%></td>
-							<td>
-								<form
-									method="post"
-									action="EliminarOrdenador"
-									class="botoneraTabla">
-									<input
-										type="hidden"
-										name="p_id"
-										value="<%=elem.getId()%>">
-									<button
-										type="submit"
-										style="background: none; border: none; color: red; cursor: pointer;">
-										<i class="fas fa-trash-alt"></i>
-									</button>
-								</form>
-								<form
-									method="post"
-									action="AdminModificar"
-									class="botoneraTabla">
-									<input
-										type="hidden"
-										name="p_id"
-										value="<%=elem.getId()%>">
-									<button
-										type="submit"
-										style="background: none; border: none; color: blue; cursor: pointer;">
-										<i class="fas fa-edit"></i>
-									</button>
-								</form>
-							</td>
-						</tr>
-						<%
-						}
-						%>
-					</div>
-				</tbody>
-				<tfoot>
-					<tr>
-						<th
-							scope="row"
-							colspan="2"># Ordenadores:</th>
-						<td><%=listaOrdenadores.size()%></td>
-					</tr>
-				</tfoot>
-			</table>
-			</div>
-		</section>
-	</div>
+			<section>
+				<%@ include file="includes/insertar.jsp"%>
+			</section>
+			<section>
+				<%@ include file="includes/filtroOrdenadores.jsp"%>
+				<div class="tablascroll">
+					<table>
+						<caption>Lista de ordenadores</caption>
+						<thead>
+							<tr>
+								<th scope="col"><h3>Id</h3></th>
+								<th scope="col"><h3>Numero de serie</h3></th>
+								<th scope="col"><h3>RAM</h3></th>
+								<th scope="col"><h3>Capacidad</h3></th>
+								<th scope="col"><h3>Modelo</h3></th>
+								<th scope="col"><h3>Marca</h3></th>
+								<th scope="col"><h3>Anotaciones</h3></th>
+								<th scope="col"><h3>Admin</h3></th>
+							</tr>
+						</thead>
+						<tbody>
+							<div>
+								<%
+								for (V_Ordenador elem : listaOrdenadores) {
+								%>
+								<tr>
+									<th scope="row"><%=elem.getId()%></th>
+									<td><%=elem.getNumeroSerie()%></td>
+									<td><%=elem.getRam()%></td>
+									<td><%=elem.getCapacidad()%></td>
+									<td><%=elem.getModelo()%></td>
+									<td><%=elem.getMarca()%></td>
+									<td><%=elem.getAnotaciones()%></td>
+									<td>
+										<form
+											method="post"
+											action="EliminarOrdenador"
+											class="botoneraTabla">
+											<input
+												type="hidden"
+												name="p_id"
+												value="<%=elem.getId()%>">
+											<button
+												type="submit"
+												style="background: none; border: none; color: red; cursor: pointer;">
+												<i class="fas fa-trash-alt"></i>
+											</button>
+										</form>
+										<form
+											method="post"
+											action="AdminModificar"
+											class="botoneraTabla">
+											<input
+												type="hidden"
+												name="p_id"
+												value="<%=elem.getId()%>">
+											<button
+												type="submit"
+												style="background: none; border: none; color: blue; cursor: pointer;">
+												<i class="fas fa-edit"></i>
+											</button>
+										</form>
+									</td>
+								</tr>
+								<%
+								}
+								%>
+							</div>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th
+									scope="row"
+									colspan="2"># Ordenadores:</th>
+								<td><%=listaOrdenadores.size()%></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</section>
+		</div>
 	</main>
 	<%@ include file="includes/pie.jsp"%>
 </body>

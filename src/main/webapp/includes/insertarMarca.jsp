@@ -57,7 +57,7 @@ if (request.getAttribute(I_Conexion.ATR_MARCA_DELETED) != null) {
 	%>
 	<form
 		name="ordenadorForm"
-		class="login"
+		class="ordenadorForm"
 		method="post"
 		action="InsertarMarca"
 		onsubmit="return validateForm()">

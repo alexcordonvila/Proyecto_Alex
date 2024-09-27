@@ -8,9 +8,9 @@
 	--fuenteSans: 'Helvetica Neue', Arial, sans-serif;
 	--fuenteSerif: 'Georgia', 'Times New Roman', serif;
 
-	--alturaCabecera: 120px;
-	--alturaPie: 40px;
-	--alturaMenu: 40px;
+	--alturaCabecera: 40px;
+	--alturaPie: 20px;
+	--alturaMenu: 35px;
 
 	--sizeH1: 60px;
 
@@ -72,7 +72,7 @@ header{
 }
 
 
-/* Estilo general para la tabla */
+/* Estilo general para las tablas */
 table {
 	 overflow-x: auto; /* Scroll horizontal si es necesario */
     overflow-y: auto; /* Scroll vertical si es necesario */
@@ -135,6 +135,11 @@ table.scrollit {
     overflow:scroll;
     height:100px;
 }
+.tablascroll {
+    overflow-y: auto;
+    max-height: 400px;
+    margin: 30px;
+}
 
 /*FORMULARIO*/
 
@@ -187,9 +192,78 @@ form.login button[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
+/*Estilo de formulario de ordenadores*/
+.ordenadorForm{
+     margin: auto;
+    margin:auto; /* Espacio superior de 33px y centrado horizontal */
+    padding: 20px;
+    
+  
+    font-family: var(--fuenteSans);	
+}
+/* Estilo para las etiquetas */
+form.ordenadorForm label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333; /* Texto gris oscuro */
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Estilo para los campos de entrada */
+form.ordenadorForm input[type="text"],
+form.ordenadorForm input[type="tipo"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
+    font-size: 14px;
+    color: #555; /* Texto gris */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+/* Estilo para el botón */
+form.ordenadorForm button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007aff; /* Azul estilo Apple */
+    color: #fff; /* Texto blanco */
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 /* Efecto hover para el botón */
-form.login button[type="submit"]:hover {
+form.ordenadorForm button[type="submit"]:hover {
     background-color: #005bb5; /* Azul más oscuro al pasar el mouse */
+}
+/* Estilo para los campos de selección (select) */
+form.ordenadorForm select {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espaciado inferior */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
+    font-size: 14px; /* Tamaño de fuente */
+    color: #555; /* Texto gris */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+    appearance: none; /* Quita el estilo por defecto del navegador */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%23555"><polygon points="0,0 16,0 8,8" /></svg>'); /* Icono de flecha */
+    background-repeat: no-repeat; /* No repetir el fondo */
+    background-position: right 10px center; /* Posición del icono */
+    background-size: 12px; /* Tamaño del icono */
+}
+
+/* Estilo para el contenedor de selección (select) */
+form.ordenadorForm select:focus {
+    border-color: #007aff; /* Cambio de borde al enfocar */
+    outline: none; /* Elimina el contorno por defecto */
 }
 footer{
 	
@@ -259,6 +333,7 @@ nav ul li a{
     background-color: #f5f5f5; /* Un gris claro y suave */
     height: 100%;
     padding: 15px;
+    margin: auto;
     gap: 5px;
 }
 
@@ -279,6 +354,7 @@ nav ul li a{
     align-items: flex-start;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
+    align-items: center;
 }
 
 .search-form label {

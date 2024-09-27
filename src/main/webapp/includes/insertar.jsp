@@ -10,9 +10,9 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPLOADED) != null) {
 }
 %>
 <%
-int isOrdenadorDeleted= -1;
+int isOrdenadorDeleted = -1;
 if (request.getAttribute(I_Conexion.ATR_ORDENADOR_BORRADO) != null) {
-    isOrdenadorDeleted = (int) request.getAttribute(I_Conexion.ATR_ORDENADOR_BORRADO);
+	isOrdenadorDeleted = (int) request.getAttribute(I_Conexion.ATR_ORDENADOR_BORRADO);
 }
 %>
 <%
@@ -74,12 +74,13 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 	%>
 	<form
 		name="ordenadorForm"
-		class="login"
+		class="ordenadorForm"
 		method="post"
 		action="InsertarOrdenador"
 		onsubmit="return validateForm()">
 		<H3>Añadir ordenador</H3>
-		</select> <label>Número de serie*</label> <input
+		<label>Número de serie*</label>
+		 <input
 			required
 			type="text"
 			name="p_numeroSerie"
