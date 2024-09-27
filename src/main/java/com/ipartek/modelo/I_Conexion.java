@@ -13,6 +13,7 @@ public interface I_Conexion {
     String JSP_TODOS = "index.jsp";
     String JSP_ADMIN = "admin.jsp";
     String JSP_MODIFICAR = "modificar.jsp";
+    String JSP_OPCIONES = "opciones.jsp";
 
     // Tablas de la BD
     String TABLA_ORDENADORES = "ordenadores";

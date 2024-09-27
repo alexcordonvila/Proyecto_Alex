@@ -16,7 +16,7 @@ import com.ipartek.modelo.DB_Helper;
 import com.ipartek.modelo.I_Conexion;
 import com.ipartek.modelo.dto.Marca;
 import com.ipartek.modelo.dto.V_Modelo;
-import com.ipartek.modelo.dto.V_Ordenador;
+
 
 /**
  * Servlet implementation class MenuAdmin
