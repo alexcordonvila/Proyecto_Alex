@@ -31,4 +31,6 @@ public interface I_Metodos {
     int insertarMarca(Connection con, Marca marca);
 
     int eliminarMarca(Connection con, int id);
+
+    int eliminarModelo(Connection con, int id);
 }

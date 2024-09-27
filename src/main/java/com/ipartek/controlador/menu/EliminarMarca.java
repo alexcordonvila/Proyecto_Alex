@@ -33,8 +33,6 @@ public class EliminarMarca extends HttpServlet implements I_Conexion {
 	    throws ServletException, IOException {
 	// 1- Recuperamos datos del JSP:
 
-	// 1- Recuperamos datos del JSP:
-
 	int id = Integer.parseInt(request.getParameter("p_id"));
 	System.out.println("Dato ID de la marca a borrar recuperada del JSP: " + id);
 

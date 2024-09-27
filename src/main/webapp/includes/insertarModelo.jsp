@@ -9,6 +9,12 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPLOADED) != null) {
 }
 %>
 <%
+int isModeloDeleted = -1;
+if (request.getAttribute(I_Conexion.ATR_MODELO_DELETED) != null) {
+    isModeloDeleted = (int) request.getAttribute(I_Conexion.ATR_MODELO_DELETED);
+}
+%>
+<%
 List<String> listaMarcasUnicas = new ArrayList<String>();
 if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS_UNICAS) != null) {
     listaMarcasUnicas = (List) request.getAttribute(I_Conexion.ATR_LISTA_MARCAS_UNICAS);
@@ -47,7 +53,17 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS_UNICAS) != null) {
 	<%
 	}
 	%>
-
+<%
+	if (isModeloDeleted == 1) {
+	%>
+	<div class="message success">Modelo borrado correctamente</div>
+	<%
+	} else if (isModeloDeleted == 0) {
+	%>
+	<div class="message error">Error al borrar el modelo</div>
+	<%
+	}
+	%>
 	<form
 		name="ordenadorForm"
 		class="login"
