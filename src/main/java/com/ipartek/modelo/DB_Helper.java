@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ipartek.I_Colores;
+import com.ipartek.modelo.dto.Marca;
+import com.ipartek.modelo.dto.Modelo;
 import com.ipartek.modelo.dto.Ordenador;
 import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
@@ -173,6 +175,49 @@ public class DB_Helper implements I_Conexion, I_Metodos {
     }
 
     @Override
+    public List<Marca> obtenerTodasMarcas(Connection con) {
+	List<Marca> lista = new ArrayList<Marca>();
+	try {
+	    CallableStatement cStmt = con.prepareCall(SP_OBTENER_TODAS_MARCAS);
+
+	    boolean tieneSelect = cStmt.execute();
+
+	    if (tieneSelect == true) {
+
+		ResultSet rs = cStmt.getResultSet();
+
+		while (rs.next()) {
+
+		    Marca marca = new Marca();
+
+		    marca.setId(rs.getInt(MARCAS_ID));
+		    marca.setMarca(rs.getString(MARCAS_MARCA));
+
+		    lista.add(marca);
+		}
+
+		System.out.println("Lista de todas las marcas obtenida:");
+		System.out.println(lista);
+
+		return lista;
+
+	    } else {
+		System.out.println("No se pudo obtener una lista de marcas");
+		System.out.println("El Stored procedure no tiene un RESULTSET");
+
+		return new ArrayList<Marca>();
+	    }
+
+	} catch (SQLException e) {
+	    System.out.println("ERROR DE BD: CONSULTA");
+	    System.out.println("Error al obtener la lista de todas las marcas");
+	    System.out.println(e.getMessage());
+
+	    return new ArrayList<Marca>();
+	}
+    }
+
+    @Override
     public int insertarOrdenador(Connection con, Ordenador ord) {
 	try {
 
@@ -197,6 +242,43 @@ public class DB_Helper implements I_Conexion, I_Metodos {
     }
 
     @Override
+    public int insertarMarca(Connection con, Marca marca) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_INSERTAR_MARCA);
+	    cStmt.setString(1, marca.getMarca());
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: INSERT");
+	    System.out.println("Error al añadir la Marca");
+	    System.out.println(e.getMessage());
+
+	    return 0;
+	}
+    }
+
+    @Override
+    public int insertarModelo(Connection con, Modelo modelo) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_INSERTAR_MODELO);
+	    cStmt.setString(1, modelo.getModelo());
+	    cStmt.setInt(2, modelo.getFK_marca());
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: INSERT");
+	    System.out.println("Error al añadir el modelo");
+	    System.out.println(e.getMessage());
+
+	    return 0;
+	}
+    }
+
+    @Override
     public int modificarOrdenador(Connection con, Ordenador ord) {
 	try {
 
@@ -214,7 +296,7 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	} catch (SQLException e) {
 
 	    System.out.println("ERROR DE BD: UPDATE");
-	    System.out.println("Error al modificar el ordenador con id="+ord.getId());
+	    System.out.println("Error al modificar el ordenador con id=" + ord.getId());
 	    System.out.println(e.getMessage());
 
 	    return 0;
@@ -248,7 +330,7 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		return v_ordenador;
 
 	    } else {
-		System.out.println("No se pudo obtener el ordenador con id:"+id);
+		System.out.println("No se pudo obtener el ordenador con id:" + id);
 		System.out.println("El Stored procedure no tiene un RESULTSET");
 
 		return v_ordenador;
@@ -256,10 +338,44 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 
 	} catch (SQLException e) {
 	    System.out.println("ERROR DE BD: CONSULTA");
-	    System.out.println("Error al obtener el ordenador con id:"+id);
+	    System.out.println("Error al obtener el ordenador con id:" + id);
 	    System.out.println(e.getMessage());
 
 	    return v_ordenador;
+	}
+    }
+
+    public int eliminarMarca(Connection con, int id) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_ELIMINAR_MARCA);
+	    cStmt.setInt(1, id);
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: DELETE");
+	    System.out.println("Error al eliminar la marca");
+	    System.out.println(e.getMessage());
+
+	    return 0;
+	}
+    }
+
+    public int eliminarModelo(Connection con, int id) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_ELIMINAR_MODELO);
+	    cStmt.setInt(1, id);
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: DELETE");
+	    System.out.println("Error al eliminar el modelo");
+	    System.out.println(e.getMessage());
+
+	    return 0;
 	}
     }
 }
