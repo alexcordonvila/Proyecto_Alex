@@ -47,7 +47,6 @@ public class AdminModificar extends HttpServlet implements I_Conexion {
 	DB_Helper db = new DB_Helper();
 
 	try (Connection con = db.conectar()) {
-	    List<V_Ordenador> listaOrdenadores = Helper.obtenerListaOrdenadores(db, con);
 	    List<V_Modelo> listaModelos = Helper.obtenerListaModelos(db, con);
 	    V_Ordenador datosOrdenador = Helper.obtenerOrdenador(db, con, id);
 	    List<String> listaMarcas = Helper.obtenerMarcasUnicas(listaModelos);

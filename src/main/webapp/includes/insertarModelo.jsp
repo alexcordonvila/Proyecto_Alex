@@ -66,7 +66,7 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 	%>
 	<form
 		name="ordenadorForm"
-		class="login"
+		class="ordenadorForm"
 		method="post"
 		action="InsertarModelo"
 		onsubmit="return validateForm()">

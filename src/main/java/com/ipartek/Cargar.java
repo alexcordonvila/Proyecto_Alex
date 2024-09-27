@@ -3,11 +3,8 @@ package com.ipartek;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.modelo.DB_Helper;
 import com.ipartek.modelo.I_Conexion;
-import com.ipartek.modelo.dto.Marca;
+
 import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
 

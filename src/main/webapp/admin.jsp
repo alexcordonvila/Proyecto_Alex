@@ -72,6 +72,8 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 		<div class="adminContainer">
 			<section>
 				<%@ include file="includes/insertarModelo.jsp"%>
+				
+				<div class="tablascroll">
 				<table>
 					<caption>Lista de modelos</caption>
 					<thead>
@@ -137,6 +139,7 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 			</section>
 			<section>
 				<%@ include file="includes/insertarMarca.jsp"%>
+				<div class="tablascroll">
 				<table>
 					<caption>Lista de Marcas</caption>
 					<thead>
@@ -199,6 +202,7 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 						</tr>
 					</tfoot>
 				</table>
+				</div>
 			</section>
 		</div>
 	</main>

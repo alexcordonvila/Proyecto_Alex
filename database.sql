@@ -26,7 +26,7 @@ CREATE TABLE `marcas` (
   `id` int NOT NULL AUTO_INCREMENT,
   `marca` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `marcas` (
 
 LOCK TABLES `marcas` WRITE;
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
-INSERT INTO `marcas` VALUES (1,'Dell'),(2,'HP'),(3,'Apple'),(4,'Lenovo'),(5,'Acer'),(6,'Asus'),(7,'MSI'),(8,'Toshiba'),(9,'Samsung'),(10,'Sony'),(11,'Nothink');
+INSERT INTO `marcas` VALUES (1,'Dell'),(2,'HP'),(3,'Apple'),(4,'Lenovo'),(5,'Acer'),(6,'Asus'),(7,'MSI'),(8,'Toshiba'),(9,'Samsung'),(10,'Sony');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +53,7 @@ CREATE TABLE `modelos` (
   PRIMARY KEY (`id`),
   KEY `constr_modelos_FK_marca_idx` (`FK_marca`),
   CONSTRAINT `constr_modelos_FK_marca` FOREIGN KEY (`FK_marca`) REFERENCES `marcas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `modelos` (
 
 LOCK TABLES `modelos` WRITE;
 /*!40000 ALTER TABLE `modelos` DISABLE KEYS */;
-INSERT INTO `modelos` VALUES (1,'XPS 13',1),(2,'Inspiron 15',1),(3,'Alienware m15',1),(4,'Latitude 7400',1),(5,'Precision 5550',1),(6,'Pavilion 15',2),(7,'Spectre x360',2),(8,'Omen 17',2),(9,'EliteBook 850',2),(10,'ProBook 450',2),(11,'MacBook Air',3),(12,'MacBook Pro 16',3),(13,'iMac 24\"',3),(14,'Mac Mini',3),(15,'Mac Pro',3),(16,'ThinkPad X1',4),(17,'IdeaPad 3',4),(18,'Yoga Slim 7',4),(19,'Legion 5',4),(20,'ThinkBook 14s',4),(21,'Swift 3',5),(22,'Aspire 5',5),(23,'Predator Helios 300',5),(24,'Nitro 5',5),(25,'Spin 5',5),(26,'ZenBook 13',6),(27,'ROG Strix G15',6),(28,'VivoBook S14',6),(29,'TUF Dash F15',6),(30,'ProArt StudioBook',6),(31,'GF63 Thin',7),(32,'Prestige 14',7),(33,'Creator Z16',7),(34,'Katana GF66',7),(35,'Modern 15',7),(36,'Satellite Pro',8),(37,'Tecra A50',8),(38,'Portégé X30',8),(39,'Dynabook E10',8),(40,'L50',8),(41,'Galaxy Book Pro',9),(42,'Galaxy Book Flex',9),(43,'Notebook 9',9),(44,'Chromebook 4',9),(45,'Galaxy Book Odyssey',9),(46,'VAIO Z',10),(47,'VAIO S',10),(48,'VAIO Fit 15E',10),(49,'VAIO Pro 13',10),(50,'VAIO Duo 11',10),(51,'Nalx_3000',11);
+INSERT INTO `modelos` VALUES (1,'XPS 13',1),(2,'Inspiron 15',1),(3,'Alienware m15',1),(4,'Latitude 7400',1),(5,'Precision 5550',1),(6,'Pavilion 15',2),(7,'Spectre x360',2),(8,'Omen 17',2),(9,'EliteBook 850',2),(10,'ProBook 450',2),(11,'MacBook Air',3),(12,'MacBook Pro 16',3),(13,'iMac 24\"',3),(14,'Mac Mini',3),(15,'Mac Pro',3),(16,'ThinkPad X1',4),(17,'IdeaPad 3',4),(18,'Yoga Slim 7',4),(19,'Legion 5',4),(20,'ThinkBook 14s',4),(21,'Swift 3',5),(22,'Aspire 5',5),(23,'Predator Helios 300',5),(24,'Nitro 5',5),(25,'Spin 5',5),(26,'ZenBook 13',6),(27,'ROG Strix G15',6),(28,'VivoBook S14',6),(29,'TUF Dash F15',6),(30,'ProArt StudioBook',6),(31,'GF63 Thin',7),(32,'Prestige 14',7),(33,'Creator Z16',7),(34,'Katana GF66',7),(35,'Modern 15',7),(36,'Satellite Pro',8),(37,'Tecra A50',8),(38,'Portégé X30',8),(39,'Dynabook E10',8),(40,'L50',8),(41,'Galaxy Book Pro',9),(42,'Galaxy Book Flex',9),(43,'Notebook 9',9),(44,'Chromebook 4',9),(45,'Galaxy Book Odyssey',9),(46,'VAIO Z',10),(47,'VAIO S',10),(54,'Alex',1),(57,'qwerty',2),(58,'asdf',5),(59,'asdf',5);
 /*!40000 ALTER TABLE `modelos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `ordenadores` (
   KEY `constr_ordenadores_FK_modelos_idx` (`FK_modelo`),
   FULLTEXT KEY `fulltextIDX` (`numeroSerie`),
   CONSTRAINT `constr_ordenadores_FK_modelos` FOREIGN KEY (`FK_modelo`) REFERENCES `modelos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,6 +138,50 @@ SET character_set_client = @saved_cs_client;
 --
 -- Dumping routines for database 'db_reparaciones'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `sp_eliminar_marca` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_eliminar_marca`(
+in id int
+)
+BEGIN
+DELETE FROM marcas m
+where  id = m.id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_eliminar_modelo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_eliminar_modelo`(
+in id int
+)
+BEGIN
+DELETE FROM modelos m
+where  id = m.id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_eliminar_ordenador` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -313,6 +357,30 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_obtener_ordenador_por_numSerie` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_obtener_ordenador_por_numSerie`(IN pnumSerie varchar(45))
+BEGIN
+    SELECT 
+        *
+    FROM 
+        v_ordenadores v_o
+    WHERE 
+        v_o.numeroSerie = pnumSerie;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_obtener_todas_marcas` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -420,4 +488,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-26 12:49:38
+-- Dump completed on 2024-09-27 12:44:23
