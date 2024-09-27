@@ -22,40 +22,40 @@ import com.ipartek.modelo.dto.V_Ordenador;
  * Servlet implementation class MenuAdmin
  */
 @WebServlet("/MenuAdmin")
-public class MenuAdmin extends HttpServlet implements I_Conexion{
-	private static final long serialVersionUID = 1L;
-       
+public class MenuAdmin extends HttpServlet implements I_Conexion {
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
     public MenuAdmin() {
-        super();
+	super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    DB_Helper db = new DB_Helper();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	    throws ServletException, IOException {
+	DB_Helper db = new DB_Helper();
 
-		try (Connection con = db.conectar()) {
-		    List<V_Modelo> listaModelos = Helper.obtenerListaModelos(db, con);
-		    List<Marca> listaMarcas = Helper.obtenerListaMarcas(db, con);
-		    //Solo los strings para simplificar la gestión del JSP
-		    List<String> listaMarcasUnicas = Helper.obtenerMarcasUnicas(listaModelos);
+	try (Connection con = db.conectar()) {
+	    List<V_Modelo> listaModelos = Helper.obtenerListaModelos(db, con);
+	    List<Marca> listaMarcas = Helper.obtenerListaMarcas(db, con);
 
-		    // Configurar los atributos de la solicitud
-		    request.setAttribute(ATR_LISTA_MODELOS, listaModelos);
-		    request.setAttribute(ATR_LISTA_MARCAS_UNICAS, listaMarcasUnicas);
-		    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
+	    // Configurar los atributos de la solicitud
+	    request.setAttribute(ATR_LISTA_MODELOS, listaModelos);
 
-		    // Redirigir a la JSP
-		    request.getRequestDispatcher(JSP_ADMIN).forward(request, response);
-		} catch (SQLException e) {
-		    e.printStackTrace(); // Manejo de errores adecuado
-		    // Aquí podríamos redirigir a un error.jsp
-		}
+	    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
+
+	    // Redirigir a la JSP
+	    request.getRequestDispatcher(JSP_ADMIN).forward(request, response);
+	} catch (SQLException e) {
+	    e.printStackTrace(); // Manejo de errores adecuado
+	    // Aquí podríamos redirigir a un error.jsp
 	}
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	    throws ServletException, IOException {
+	doGet(request, response);
+    }
 
 }

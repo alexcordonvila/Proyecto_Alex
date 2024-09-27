@@ -57,6 +57,7 @@ public interface I_Conexion {
     String SP_INSERTAR_MARCA = "call sp_insertar_marca(?)";
     String SP_ELIMINAR_MARCA = "call sp_eliminar_marca(?)";
     String SP_ELIMINAR_MODELO = "call sp_eliminar_modelo(?)";
+    String SP_INSERTAR_MODELO = "call sp_insertar_modelo(?,?)";
     
     // atributos de la mochila
     String ATR_LISTA_ORDENADORES = "atr_lista_ordenadores";

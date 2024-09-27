@@ -1,11 +1,12 @@
+<%@page import="com.ipartek.modelo.dto.Marca"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.ipartek.modelo.I_Conexion"%>
 <%@page import="com.ipartek.modelo.dto.V_Modelo"%>
 <%
 int isModeloUploaded = -1;
-if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPLOADED) != null) {
-    isModeloUploaded = (int) request.getAttribute(I_Conexion.ATR_ORDENADOR_UPLOADED);
+if (request.getAttribute(I_Conexion.ATR_MODELO_UPLOADED) != null) {
+    isModeloUploaded = (int) request.getAttribute(I_Conexion.ATR_MODELO_UPLOADED);
 }
 %>
 <%
@@ -15,14 +16,13 @@ if (request.getAttribute(I_Conexion.ATR_MODELO_DELETED) != null) {
 }
 %>
 <%
-List<String> listaMarcasUnicas = new ArrayList<String>();
-if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS_UNICAS) != null) {
-    listaMarcasUnicas = (List) request.getAttribute(I_Conexion.ATR_LISTA_MARCAS_UNICAS);
+List<Marca> listaMarca = new ArrayList<Marca>();
+if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
+    listaMarca = (List) request.getAttribute(I_Conexion.ATR_LISTA_MARCAS);
 } else {
-	//TAREA PARA METER EN EL LOG
+    //TAREA PARA METER EN EL LOG
 }
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +68,7 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS_UNICAS) != null) {
 		name="ordenadorForm"
 		class="login"
 		method="post"
-		action="InsertarOrdenador"
+		action="InsertarModelo"
 		onsubmit="return validateForm()">
 		<H3>Añadir modelo</H3>
 		</select> <label>Nombre de modelo*</label> 
@@ -76,17 +76,17 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS_UNICAS) != null) {
 			required
 			type="text"
 			name="p_modelo"
-			placeholder="Nombre de modelo"> <br> <label for="marca">
+			placeholder="Nombre de modelo"> <br> <label for="modelo">
 			Marca asociada* 
 			<select
 			required
-			name="p_marca"
+			name="p_fk_modelo"
 			id="marca">
 				<%
-				for (String elem : listaMarcasUnicas) {
+				for (Marca elem : listaMarca) {
 				%>
-				<option value=<%=elem%>>
-					<%=elem%>
+				<option value=<%=elem.getId()%>>
+					<%=elem.getMarca()%>
 				</option>
 				<%
 				}

@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.ipartek.I_Colores;
 import com.ipartek.modelo.dto.Marca;
+import com.ipartek.modelo.dto.Modelo;
 import com.ipartek.modelo.dto.Ordenador;
 import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
@@ -259,6 +260,25 @@ public class DB_Helper implements I_Conexion, I_Metodos {
     }
 
     @Override
+    public int insertarModelo(Connection con, Modelo modelo) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_INSERTAR_MODELO);
+	    cStmt.setString(1, modelo.getModelo());
+	    cStmt.setInt(2, modelo.getFK_marca());
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: INSERT");
+	    System.out.println("Error al añadir el modelo");
+	    System.out.println(e.getMessage());
+
+	    return 0;
+	}
+    }
+
+    @Override
     public int modificarOrdenador(Connection con, Ordenador ord) {
 	try {
 
@@ -341,20 +361,21 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    return 0;
 	}
     }
+
     public int eliminarModelo(Connection con, int id) {
-   	try {
+	try {
 
-   	    CallableStatement cStmt = con.prepareCall(SP_ELIMINAR_MODELO);
-   	    cStmt.setInt(1, id);
-   	    return cStmt.executeUpdate();
+	    CallableStatement cStmt = con.prepareCall(SP_ELIMINAR_MODELO);
+	    cStmt.setInt(1, id);
+	    return cStmt.executeUpdate();
 
-   	} catch (SQLException e) {
+	} catch (SQLException e) {
 
-   	    System.out.println("ERROR DE BD: DELETE");
-   	    System.out.println("Error al eliminar el modelo");
-   	    System.out.println(e.getMessage());
+	    System.out.println("ERROR DE BD: DELETE");
+	    System.out.println("Error al eliminar el modelo");
+	    System.out.println(e.getMessage());
 
-   	    return 0;
-   	}
-       }
+	    return 0;
+	}
+    }
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.ipartek.modelo.dto.Marca;
+import com.ipartek.modelo.dto.Modelo;
 import com.ipartek.modelo.dto.Ordenador;
 import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
@@ -33,4 +34,6 @@ public interface I_Metodos {
     int eliminarMarca(Connection con, int id);
 
     int eliminarModelo(Connection con, int id);
+
+    int insertarModelo(Connection con, Modelo modelo);
 }
