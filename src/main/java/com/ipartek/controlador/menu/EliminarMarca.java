@@ -54,7 +54,7 @@ public class EliminarMarca extends HttpServlet implements I_Conexion {
 	    request.setAttribute(ATR_LISTA_MARCAS_UNICAS, listaMarcasUnicas);
 	    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
 	    request.setAttribute(ATR_MARCA_DELETED, marcaEliminada);
-
+	    request.setAttribute(ATR_MARCA_UPLOADED, -1);
 	    // Redirigir a la JSP
 	    request.getRequestDispatcher(JSP_ADMIN).forward(request, response);
 	} catch (SQLException e) {

@@ -11,7 +11,7 @@ if (request.getAttribute(I_Conexion.ATR_MARCA_UPLOADED) != null) {
 <%
 int isMarcaDeleted = -1;
 if (request.getAttribute(I_Conexion.ATR_MARCA_DELETED) != null) {
-	isMarcaUploaded = (int) request.getAttribute(I_Conexion.ATR_MARCA_DELETED);
+    isMarcaDeleted = (int) request.getAttribute(I_Conexion.ATR_MARCA_DELETED);
 }
 %>
 <!DOCTYPE html>

@@ -59,7 +59,8 @@ public class InsertarMarca extends HttpServlet implements I_Conexion {
 		    request.setAttribute(ATR_LISTA_MARCAS_UNICAS, listaMarcasUnicas);
 		    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
 		    request.setAttribute(ATR_MARCA_UPLOADED, marcaInsertada);
-		    
+		    request.setAttribute(ATR_MARCA_DELETED, -1);
+
 	
 		    // Redirigir a la JSP
 		    request.getRequestDispatcher(JSP_ADMIN).forward(request, response);

@@ -65,7 +65,7 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 		<%
 		} else if (isOrdenadorUpdated == 0) {
 		%>
-		<div class="message error">Error al insertar el ordenador</div>
+		<div class="message error">Error al modificar el ordenador</div>
 		<%
 		}
 		%>
