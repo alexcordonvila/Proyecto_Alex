@@ -51,10 +51,14 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPDATED) != null) {
 		<%
 		}
 		%>
+		<div class="adminContainer">
 		<section>
 			<%@ include file="includes/insertar.jsp"%>
 		</section>
+
 		<section>
+		<%@ include file="includes/filtroOrdenadores.jsp"%>
+			<div style="overflow-y: auto; max-height: 400px;">
 			<table>
 				<caption>Lista de ordenadores</caption>
 				<thead>
@@ -127,7 +131,9 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPDATED) != null) {
 					</tr>
 				</tfoot>
 			</table>
+			</div>
 		</section>
+	</div>
 	</main>
 	<%@ include file="includes/pie.jsp"%>
 </body>

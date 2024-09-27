@@ -53,6 +53,7 @@ public interface I_Conexion {
     String SP_INSERTAR_ORDENADOR = "call sp_insertar_ordenador(?,?,?,?,?);";
     String SP_MODIFICAR_ORDENADOR = "call sp_modificar_ordenador(?,?,?,?,?,?);";
     String SP_OBTENER_ORDENADOR_POR_ID = "call sp_obtener_ordenador_por_id(?)";
+    String SP_OBTENER_ORDENADORES_POR_NUMEROSERIE = "call sp_obtener_ordenador_por_numSerie(?);";
     String SP_OBTENER_TODAS_MARCAS = "call sp_obtener_todas_marcas()";
     String SP_INSERTAR_MARCA = "call sp_insertar_marca(?)";
     String SP_ELIMINAR_MARCA = "call sp_eliminar_marca(?)";
@@ -72,4 +73,6 @@ public interface I_Conexion {
     String ATR_MARCA_DELETED ="atr_marca_deleted";
     String ATR_MODELO_UPLOADED = "atr_modelo_uploaded";
     String ATR_MODELO_DELETED= "atr_modelo_deleted";
+    String ATR_FILTRO_ACTIVADO = "atr_filtro_activado";
+    String ATR_ORDENADOR_NUMEROSERIE ="atr_ordenador_numeroserie";
 }
