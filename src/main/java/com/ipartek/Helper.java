@@ -18,7 +18,9 @@ public class Helper {
     public static List<V_Ordenador> obtenerListaOrdenadores(DB_Helper db, Connection con) throws SQLException {
 	return db.obtenerTodosOrdenadores(con);
     }
-
+    public static List<V_Ordenador> obtenerListaOrdenadoresFiltrados(DB_Helper db, Connection con, Ordenador ordendaor) throws SQLException {
+	return db.obtenerOrdenadoresFiltrados(con,ordendaor);
+    }
     public static List<V_Modelo> obtenerListaModelos(DB_Helper db, Connection con) throws SQLException {
 	return db.obtenerTodosModelos(con);
     }

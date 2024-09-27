@@ -378,4 +378,50 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    return 0;
 	}
     }
+
+    public List<V_Ordenador> obtenerOrdenadoresFiltrados(Connection con, Ordenador ordendaor) {
+	List<V_Ordenador> lista = new ArrayList<V_Ordenador>();
+
+	try {
+	    CallableStatement cStmt = con.prepareCall(SP_OBTENER_ORDENADORES_POR_NUMEROSERIE);
+	    cStmt.setString(1, ordendaor.getNumeroSerie());
+
+	    boolean tieneSelect = cStmt.execute();
+
+	    if (tieneSelect == true) {
+		ResultSet rs = cStmt.getResultSet();
+
+		while (rs.next()) {
+		    V_Ordenador v_ordenador = new V_Ordenador();
+
+		    v_ordenador.setId(rs.getInt(V_ORDENADORES_ID));
+		    v_ordenador.setNumeroSerie(rs.getString(V_ORDENADORES_NUMERO_SERIE));
+		    v_ordenador.setCapacidad(rs.getInt(V_ORDENADORES_CAPACIDAD));
+		    v_ordenador.setRam(rs.getInt(V_ORDENADORES_RAM));
+		    v_ordenador.setAnotaciones(rs.getString(V_ORDENADORES_ANOTACIONES));
+		    v_ordenador.setModelo(rs.getString(V_ORDENADORES_MODELO));
+		    v_ordenador.setMarca(rs.getString(V_ORDENADORES_MARCA));
+		    lista.add(v_ordenador);
+		}
+
+		System.out.println("Ordenadores obtenidos:");
+		System.out.println(lista);
+
+		return lista;
+
+	    } else {
+		System.out.println("No se pudo obtener el ordenador con numSerie:" + ordendaor.getNumeroSerie());
+		System.out.println("El Stored procedure no tiene un RESULTSET");
+
+		return new ArrayList<V_Ordenador>();
+	    }
+
+	} catch (SQLException e) {
+	    System.out.println("ERROR DE BD: CONSULTA");
+	    System.out.println("Error al obtener el ordenador con numSerie:" + ordendaor.getNumeroSerie());
+	    System.out.println(e.getMessage());
+
+	    return new ArrayList<V_Ordenador>();
+	}
+    }
 }
