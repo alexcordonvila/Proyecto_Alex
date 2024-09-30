@@ -268,7 +268,7 @@ form.ordenadorForm select:focus {
 footer{
 	
 	background-color: var(--principal);
-	width:100%;
+
 	height:  var(--alturaPie);	
 	padding:var(--paddingGeneral);
 	color: var(--secundario);
