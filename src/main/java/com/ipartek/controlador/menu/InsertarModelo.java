@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ipartek.Helper;
 import com.ipartek.modelo.DB_Helper;
@@ -30,7 +31,7 @@ public class InsertarModelo extends HttpServlet implements I_Conexion {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	    HttpSession session = request.getSession();
 	 // 1- Recuperamos datos del JSP:
 
 		String p_modelo = "";
@@ -64,6 +65,7 @@ public class InsertarModelo extends HttpServlet implements I_Conexion {
 		    //request.setAttribute(ATR_MODELO_DELETED, -1);
 
 		    // Redirigir a la JSP
+		    session.setAttribute("CURRENT_PAGE", JSP_ADMIN);
 		    request.getRequestDispatcher(JSP_ADMIN).forward(request, response);
 		} catch (SQLException e) {
 		    e.printStackTrace(); // Manejo de errores adecuado

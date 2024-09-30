@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ipartek.Helper;
 import com.ipartek.modelo.DB_Helper;
@@ -34,6 +35,16 @@ public class MenuAdmin extends HttpServlet implements I_Conexion {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
+	HttpSession session = request.getSession();
+	session.setAttribute("CURRENT_PAGE", JSP_ADMIN);
+	System.out.println("SESSION= "+ session);
+	if (session != null) {
+	    String currentPage = (String) session.getAttribute("CURRENT_PAGE");
+	    if (currentPage != null && currentPage.equals(I_Conexion.JSP_ADMIN)) {
+	        // Hacer algo cuando la página actual es JSP_ADMIN
+	    }
+	    System.out.println("Current Page= "+ currentPage);
+	}
 	DB_Helper db = new DB_Helper();
 
 	try (Connection con = db.conectar()) {
@@ -46,6 +57,7 @@ public class MenuAdmin extends HttpServlet implements I_Conexion {
 	    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
 
 	    // Redirigir a la JSP
+	    
 	    request.getRequestDispatcher(JSP_ADMIN).forward(request, response);
 	} catch (SQLException e) {
 	    e.printStackTrace(); // Manejo de errores adecuado

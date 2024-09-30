@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ipartek.Helper;
 import com.ipartek.modelo.DB_Helper;
@@ -31,7 +32,7 @@ public class AdminModificar extends HttpServlet implements I_Conexion {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-	
+	HttpSession session = request.getSession();
 	// Obtener el parámetro "id" por URL
         String idParam = request.getParameter("p_id");
         // Validar y convertir el parámetro a un tipo adecuado si es necesario
@@ -58,6 +59,8 @@ public class AdminModificar extends HttpServlet implements I_Conexion {
 	    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
 
 	    // Redirigir a la JSP de modificar
+	    
+	    session.setAttribute("CURRENT_PAGE", JSP_MODIFICAR);
 	    request.getRequestDispatcher(JSP_MODIFICAR).forward(request, response);
 
 	} catch (SQLException e) {

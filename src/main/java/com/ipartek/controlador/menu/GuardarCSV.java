@@ -12,11 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ipartek.Helper;
 import com.ipartek.modelo.DB_Helper;
 import com.ipartek.modelo.I_Conexion;
-import com.ipartek.modelo.dto.V_Modelo;
 import com.ipartek.modelo.dto.V_Ordenador;
 
 /**
@@ -33,6 +33,7 @@ public class GuardarCSV extends HttpServlet implements I_Conexion {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
+	HttpSession session = request.getSession();
 	int csvGuardado = 0;
 	DB_Helper db = new DB_Helper();
 
@@ -46,9 +47,7 @@ public class GuardarCSV extends HttpServlet implements I_Conexion {
 	    csvGuardado = guardarEnCSV(listaOrdenadores, rutaArchivo);
 	    // Configurar los atributos de la solicitud
 	    request.setAttribute(ATR_LISTA_ORDENADORES, listaOrdenadores);
-
-	    // Redirigir a la JSP
-	    System.out.println("Ordenadores guardados en CSV");
+	    session.setAttribute("CURRENT_PAGE", JSP_OPCIONES);
 	    request.getRequestDispatcher(JSP_OPCIONES).forward(request, response);
 	} catch (SQLException e) {
 	    e.printStackTrace(); // Manejo de errores adecuado
@@ -76,7 +75,7 @@ public class GuardarCSV extends HttpServlet implements I_Conexion {
 			ordenador.getAnotaciones()));
 		writer.newLine();
 	    }
-	    System.out.println("Datos guardados en " + nombreArchivo);
+	   
 	    return 1;
 	} catch (IOException e) {
 	    e.printStackTrace();

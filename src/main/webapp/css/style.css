@@ -12,7 +12,7 @@
 	--alturaPie: 20px;
 	--alturaMenu: 35px;
 
-	--sizeH1: 60px;
+	--sizeH1: 40px;
 
 	--paddingGeneral: 10px;
 }
@@ -403,4 +403,46 @@ nav ul li a{
 
 .search-button:hover {
     background-color: #0056b3;
+}
+
+/*NAVBAR*/
+/* Estilo general de la navbar */
+.navbar {
+    background-color: #333;
+    padding: 2px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navbar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-item {
+    margin: 0 2px;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+
+    
+    transition: background-color 0.3s ease;
+}
+
+.navbar-link:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Estilo para el enlace activo */
+.navbar-link.active {
+    font-weight: bold;
+    background-color: #007aff;
+    color: white;
 }

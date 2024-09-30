@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ipartek.Helper;
 import com.ipartek.modelo.DB_Helper;
@@ -32,6 +33,7 @@ public class ModificarOrdenador extends HttpServlet implements I_Conexion {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
+	HttpSession session = request.getSession();
 	// 1- Recuperamos datos del JSP:
 	int p_id = Integer.parseInt(request.getParameter("p_id"));
 	String p_numeroSerie = "";
@@ -90,7 +92,7 @@ public class ModificarOrdenador extends HttpServlet implements I_Conexion {
 	    request.setAttribute(ATR_ORDENADOR_UPDATED, modificar);
 	    request.setAttribute(ATR_LISTA_MODELOS, listaModelos);
 	    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
-
+	    session.setAttribute("CURRENT_PAGE", JSP_TODOS);
 	    request.getRequestDispatcher(JSP_TODOS).forward(request, response);
 
 	} catch (SQLException e) {

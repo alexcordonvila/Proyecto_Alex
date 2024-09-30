@@ -149,12 +149,10 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		    modelo.setModelo(rs.getString(V_MODELOS_MODELO));
 		    modelo.setFK_marca(rs.getInt(V_MODELOS_FK_MARCA));
 		    modelo.setMarca(rs.getString(V_MODELOS_MARCA));
-		    System.out.println("Modelo en java:" + modelo.getModelo());
 		    lista.add(modelo);
 		}
 
-		System.out.println("Lista de todos los modelos obtenida:");
-		System.out.println(lista);
+	
 
 		return lista;
 
@@ -196,8 +194,6 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		    lista.add(marca);
 		}
 
-		System.out.println("Lista de todas las marcas obtenida:");
-		System.out.println(lista);
 
 		return lista;
 
@@ -324,8 +320,6 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		    v_ordenador.setMarca(rs.getString(V_ORDENADORES_MARCA));
 		}
 
-		System.out.println("Ordenadores obtenido:");
-		System.out.println(v_ordenador);
 
 		return v_ordenador;
 
@@ -403,9 +397,6 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		    v_ordenador.setMarca(rs.getString(V_ORDENADORES_MARCA));
 		    lista.add(v_ordenador);
 		}
-
-		System.out.println("Ordenadores obtenidos:");
-		System.out.println(lista);
 
 		return lista;
 

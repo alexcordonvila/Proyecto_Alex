@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ipartek.modelo.I_Conexion;
 
@@ -23,7 +24,9 @@ public class MenuOpciones extends HttpServlet implements I_Conexion {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    HttpSession session = request.getSession();
 		// TODO Auto-generated method stub
+	    session.setAttribute("CURRENT_PAGE", JSP_OPCIONES);
 	    request.getRequestDispatcher(JSP_OPCIONES).forward(request, response);
 
 	}

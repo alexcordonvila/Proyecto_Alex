@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ipartek.Helper;
 import com.ipartek.modelo.DB_Helper;
@@ -31,7 +32,8 @@ public class EliminarModelo extends HttpServlet implements I_Conexion {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1- Recuperamos datos del JSP:
+	    HttpSession session = request.getSession();
+	    // 1- Recuperamos datos del JSP:
 
 		int id = Integer.parseInt(request.getParameter("p_id"));
 		System.out.println("Dato ID de la marca a borrar recuperada del JSP: " + id);
@@ -54,6 +56,7 @@ public class EliminarModelo extends HttpServlet implements I_Conexion {
 		    request.setAttribute(ATR_MODELO_DELETED, modeloEliminado);
 		    request.setAttribute(ATR_MODELO_UPLOADED, -1);
 		    // Redirigir a la JSP
+		    session.setAttribute("CURRENT_PAGE", JSP_ADMIN);
 		    request.getRequestDispatcher(JSP_ADMIN).forward(request, response);
 		} catch (SQLException e) {
 		    e.printStackTrace(); // Manejo de errores adecuado
