@@ -18,23 +18,27 @@
 <body>
 	<%@ include file="includes/cabecera.jsp"%>
 	<%@ include file="includes/menu.jsp"%>
-	<div class="tablascroll">
+	
 		<main>
-			<form
-				name="ordenadorForm"
-				class="ordenadorForm"
-				method="post"
-				action="GuardarCSV"
-				onsubmit="return validateForm()">
-				<label for="myInput">Guardar ordenadores en CSV:</label>
-				<div class="input-group">
-					<button type="submit">
-						GUARDAR <i class="fa fa-save"></i>
-					</button>
-				</div>
-			</form>
+		<div class="adminContainer">
+				<section>
+					<form
+						name="ordenadorForm"
+						class="ordenadorForm"
+						method="post"
+						action="GuardarCSV"
+						onsubmit="return validateForm()">
+						<label for="myInput">Guardar ordenadores en CSV:</label>
+						<div class="input-group">
+							<button type="submit">
+								GUARDAR <i class="fa fa-save"></i>
+							</button>
+						</div>
+					</form>
+				</section>
+			</div>
 		</main>
-	</div>
+	
 	<%@ include file="includes/pie.jsp"%>
 </body>
 </html>
