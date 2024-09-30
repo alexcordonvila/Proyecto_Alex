@@ -76,4 +76,5 @@ public interface I_Conexion {
     String ATR_MODELO_DELETED= "atr_modelo_deleted";
     String ATR_FILTRO_ACTIVADO = "atr_filtro_activado";
     String ATR_ORDENADOR_NUMEROSERIE ="atr_ordenador_numeroserie";
+    String ATR_CSV_GUARDADO = "atr_csv";
 }

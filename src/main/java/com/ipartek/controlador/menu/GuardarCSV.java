@@ -43,11 +43,14 @@ public class GuardarCSV extends HttpServlet implements I_Conexion {
 	    // Obtener la ruta absoluta de la carpeta csv dentro del proyecto
 	    // Guardar los datos en formato CSV en la carpeta /csv
 	    String rutaArchivo = getServletContext().getRealPath("/csv/ordenadores.csv");
-
+	    System.out.println(rutaArchivo);
+	    
 	    csvGuardado = guardarEnCSV(listaOrdenadores, rutaArchivo);
 	    // Configurar los atributos de la solicitud
 	    request.setAttribute(ATR_LISTA_ORDENADORES, listaOrdenadores);
 	    session.setAttribute("CURRENT_PAGE", JSP_OPCIONES);
+	    request.setAttribute(ATR_CSV_GUARDADO, csvGuardado);
+	    System.out.println(csvGuardado);
 	    request.getRequestDispatcher(JSP_OPCIONES).forward(request, response);
 	} catch (SQLException e) {
 	    e.printStackTrace(); // Manejo de errores adecuado
