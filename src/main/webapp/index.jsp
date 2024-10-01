@@ -39,8 +39,7 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPDATED) != null) {
 <body>
 	<%@ include file="includes/cabecera.jsp"%>
 	<%@ include file="includes/menu.jsp"%>
-	<main>
-		<%
+	<%
 		if (isOrdenadorUpdated == 1) {
 		%>
 		<div class="message success">Ordenador modificado correctamente</div>
@@ -51,6 +50,8 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR_UPDATED) != null) {
 		<%
 		}
 		%>
+	<main>
+		
 		<div class="adminContainer">
 			<section>
 				<%@ include file="includes/insertar.jsp"%>

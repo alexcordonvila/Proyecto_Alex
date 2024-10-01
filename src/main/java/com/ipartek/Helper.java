@@ -18,9 +18,12 @@ public class Helper {
     public static List<V_Ordenador> obtenerListaOrdenadores(DB_Helper db, Connection con) throws SQLException {
 	return db.obtenerTodosOrdenadores(con);
     }
-    public static List<V_Ordenador> obtenerListaOrdenadoresFiltrados(DB_Helper db, Connection con, Ordenador ordendaor) throws SQLException {
-	return db.obtenerOrdenadoresFiltrados(con,ordendaor);
+
+    public static List<V_Ordenador> obtenerListaOrdenadoresFiltrados(DB_Helper db, Connection con, Ordenador ordendaor)
+	    throws SQLException {
+	return db.obtenerOrdenadoresFiltrados(con, ordendaor);
     }
+
     public static List<V_Modelo> obtenerListaModelos(DB_Helper db, Connection con) throws SQLException {
 	return db.obtenerTodosModelos(con);
     }
@@ -31,6 +34,15 @@ public class Helper {
 
     public static V_Ordenador obtenerOrdenador(DB_Helper db, Connection con, int id) throws SQLException {
 	return db.obtenerOrdenador(con, id);
+    }
+
+    public static Marca obtenerMarca(DB_Helper db, Connection con, int id) throws SQLException {
+	return db.obtenerMarca(con, id);
+    }
+
+    public static int modificarMarca(DB_Helper db, Connection con, Marca marca) {
+
+	return db.modificarMarca(con, marca);
     }
 
     public static int modificarOrdenador(DB_Helper db, Connection con, Ordenador ordenador) {

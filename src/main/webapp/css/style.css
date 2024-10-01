@@ -191,7 +191,29 @@ form.login button[type="submit"] {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+/* Estilo para los campos de selección (select) */
+form.login select {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espaciado inferior */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
+    font-size: 14px; /* Tamaño de fuente */
+    color: #555; /* Texto gris */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+    appearance: none; /* Quita el estilo por defecto del navegador */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%23555"><polygon points="0,0 16,0 8,8" /></svg>'); /* Icono de flecha */
+    background-repeat: no-repeat; /* No repetir el fondo */
+    background-position: right 10px center; /* Posición del icono */
+    background-size: 12px; /* Tamaño del icono */
+}
 
+/* Estilo para el contenedor de selección (select) */
+form.login select:focus {
+    border-color: #007aff; /* Cambio de borde al enfocar */
+    outline: none; /* Elimina el contorno por defecto */
+}
 /*Estilo de formulario de ordenadores*/
 .ordenadorForm{
      margin: auto;

@@ -2,18 +2,6 @@
 <%@page import="java.util.List"%>
 <%@page import="com.ipartek.modelo.I_Conexion"%>
 <%@page import="com.ipartek.modelo.dto.V_Modelo"%>
-<%
-int isMarcaUploaded = -1;
-if (request.getAttribute(I_Conexion.ATR_MARCA_UPLOADED) != null) {
-	isMarcaUploaded = (int) request.getAttribute(I_Conexion.ATR_MARCA_UPLOADED);
-}
-%>
-<%
-int isMarcaDeleted = -1;
-if (request.getAttribute(I_Conexion.ATR_MARCA_DELETED) != null) {
-    isMarcaDeleted = (int) request.getAttribute(I_Conexion.ATR_MARCA_DELETED);
-}
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,28 +21,6 @@ if (request.getAttribute(I_Conexion.ATR_MARCA_DELETED) != null) {
 </script>
 </head>
 <body>
-	<%
-	if (isMarcaUploaded == 1) {
-	%>
-	<div class="message success">Marca insertada correctamente</div>
-	<%
-	} else if (isMarcaUploaded == 0) {
-	%>
-	<div class="message error">Error al insertar la marca</div>
-	<%
-	}
-	%>
-	<%
-	if (isMarcaDeleted == 1) {
-	%>
-	<div class="message success">Marca eliminada correctamente</div>
-	<%
-	} else if (isMarcaDeleted == 0) {
-	%>
-	<div class="message error">Error al eliminar la marca</div>
-	<%
-	}
-	%>
 	<form
 		name="ordenadorForm"
 		class="ordenadorForm"
