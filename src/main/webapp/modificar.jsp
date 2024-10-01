@@ -33,6 +33,9 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR) != null) {
 <head>
 <meta charset="UTF-8">
 <title>Subir</title>
+<link
+	rel="stylesheet"
+	href="css/style.css">
 <script type="text/javascript">
 	function validateForm() {
 		var titulo = document.forms["ordenadorForm"]["p_titulo"].value;
@@ -70,9 +73,14 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR) != null) {
 			type="text"
 			name="p_numeroSerie"
 			value="<%=objetoOrdenador.getNumeroSerie()%>"
-			placeholder="Número de serie"> <br> <label for="marca">Marca* <select
+			placeholder="Número de serie"> 
+			
+			<br> 
+			<label for="marca">Marca* </label>
+			<select
 			required
 			name="p_marca"
+			
 			id="marca">
 				<%
 				for (String elem : listaMarcas) {
@@ -93,7 +101,7 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR) != null) {
 				}
 				}
 				%>
-		</select> <br> <label for="modelo">Modelo* <select
+		</select> <br> <label for="modelo">Modelo*</label> <select
 				required
 				name="p_modelo"
 				id="modelo">
@@ -136,8 +144,9 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR) != null) {
 			placeholder="Anotaciones"> <br>
 			
 			<button type="submit">
-				Modificar <i class="fa fa-edit"></i>
+				Guardar <i class="fa fa-edit"></i>
 			</button>
 	</form>
+	<%@ include file="includes/pie.jsp"%>
 </body>
 </html>

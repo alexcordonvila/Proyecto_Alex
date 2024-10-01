@@ -447,4 +447,24 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	}
     }
 
+    public int modificarMarca(Connection con, Marca marca) {
+	try {
+
+	    CallableStatement cStmt = con.prepareCall(SP_MODIFICAR_MARCA);
+
+	    cStmt.setInt(1, marca.getId());
+	    cStmt.setString(2, marca.getMarca());
+
+	    return cStmt.executeUpdate();
+
+	} catch (SQLException e) {
+
+	    System.out.println("ERROR DE BD: UPDATE");
+	    System.out.println("Error al modificar la marca con id=" + marca.getId());
+	    System.out.println(e.getMessage());
+
+	    return 0;
+	}
+    }
+
 }

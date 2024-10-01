@@ -49,7 +49,7 @@ public class AdminModificarMarca extends HttpServlet implements I_Conexion {
 	    System.out.println("Marca= "+marca.getMarca());
 	    // Redirigir a la JSP de modificar
 	    request.setAttribute(ATR_MARCA, marca);
-	    session.setAttribute("CURRENT_PAGE", JSP_MODIFICAR);
+	    session.setAttribute("CURRENT_PAGE", JSP_ADMIN);
 	    request.getRequestDispatcher(JSP_MODIFICAR_MARCA).forward(request, response);
 
 	} catch (SQLException e) {

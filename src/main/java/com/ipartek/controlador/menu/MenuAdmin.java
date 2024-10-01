@@ -53,7 +53,6 @@ public class MenuAdmin extends HttpServlet implements I_Conexion {
 
 	    // Configurar los atributos de la solicitud
 	    request.setAttribute(ATR_LISTA_MODELOS, listaModelos);
-
 	    request.setAttribute(ATR_LISTA_MARCAS, listaMarcas);
 
 	    // Redirigir a la JSP

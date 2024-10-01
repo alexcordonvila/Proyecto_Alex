@@ -38,4 +38,6 @@ public interface I_Metodos {
     public int insertarModelo(Connection con, Modelo modelo);
 
     public Marca obtenerMarca(Connection con, int id);
+
+    public int modificarMarca(Connection con, Marca marca);
 }

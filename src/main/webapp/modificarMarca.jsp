@@ -47,7 +47,7 @@ if (request.getAttribute(I_Conexion.ATR_MARCA) != null) {
 		name="ordenadorForm"
 		class="login"
 		method="post"
-		action="ModificarOrdenador"
+		action="ModificarMarca"
 		onsubmit="return validateForm()">
 		<H3>Modificar marca</H3>
 		
@@ -66,7 +66,7 @@ if (request.getAttribute(I_Conexion.ATR_MARCA) != null) {
 			 <input
 			required
 			type="text"
-			name="p_nombreMarca"
+			name="p_marca"
 			placeholder="Nombre de marca"
 			value="<%=objetoMarca.getMarca()%>">
 			<br>
