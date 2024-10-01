@@ -174,7 +174,7 @@ if (request.getAttribute(I_Conexion.ATR_LISTA_MARCAS) != null) {
 									</form>
 									<form
 										method="post"
-										action="AdminModificarModelo"
+										action="AdminModificarMarca"
 										class="botoneraTabla">
 										<input
 											type="hidden"

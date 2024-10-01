@@ -135,8 +135,6 @@ if (request.getAttribute(I_Conexion.ATR_ORDENADOR) != null) {
 			value="<%=objetoOrdenador.getAnotaciones()%>"
 			placeholder="Anotaciones"> <br>
 			
-			
-			
 			<button type="submit">
 				Modificar <i class="fa fa-edit"></i>
 			</button>

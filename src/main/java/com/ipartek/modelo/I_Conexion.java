@@ -14,6 +14,7 @@ public interface I_Conexion {
     String JSP_ADMIN = "admin.jsp";
     String JSP_MODIFICAR = "modificar.jsp";
     String JSP_OPCIONES = "opciones.jsp";
+    String JSP_MODIFICAR_MARCA = "modificarMarca.jsp";
 
     // Tablas de la BD
     String TABLA_ORDENADORES = "ordenadores";
@@ -60,7 +61,9 @@ public interface I_Conexion {
     String SP_ELIMINAR_MARCA = "call sp_eliminar_marca(?)";
     String SP_ELIMINAR_MODELO = "call sp_eliminar_modelo(?)";
     String SP_INSERTAR_MODELO = "call sp_insertar_modelo(?,?)";
-    
+    String SP_OBTENER_MODELO_POR_ID = "call sp_obtener_modelo_por_id(?)";
+    String SP_OBTENER_MARCA_POR_ID = "call sp_obtener_marca_por_id(?)";
+
     // atributos de la mochila
     String ATR_LISTA_ORDENADORES = "atr_lista_ordenadores";
     String ATR_LISTA_MODELOS = "atr_lista_modelos";
@@ -72,6 +75,7 @@ public interface I_Conexion {
     String ATR_LISTA_MARCAS_UNICAS = "atr_lista_marcas_unicas";
     String ATR_MARCA_UPLOADED = "atr_marca_uploaded";
     String ATR_MARCA_DELETED ="atr_marca_deleted";
+    String ATR_MARCA = "atr_marca";
     String ATR_MODELO_UPLOADED = "atr_modelo_uploaded";
     String ATR_MODELO_DELETED= "atr_modelo_deleted";
     String ATR_FILTRO_ACTIVADO = "atr_filtro_activado";

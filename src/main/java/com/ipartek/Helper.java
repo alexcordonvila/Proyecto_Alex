@@ -32,7 +32,9 @@ public class Helper {
     public static V_Ordenador obtenerOrdenador(DB_Helper db, Connection con, int id) throws SQLException {
 	return db.obtenerOrdenador(con, id);
     }
-
+    public static Marca obtenerMarca(DB_Helper db, Connection con, int id) throws SQLException {
+	return db.obtenerMarca(con, id);
+    }
     public static int modificarOrdenador(DB_Helper db, Connection con, Ordenador ordenador) {
 
 	return db.modificarOrdenador(con, ordenador);

@@ -152,8 +152,6 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		    lista.add(modelo);
 		}
 
-	
-
 		return lista;
 
 	    } else {
@@ -193,7 +191,6 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 
 		    lista.add(marca);
 		}
-
 
 		return lista;
 
@@ -320,7 +317,6 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 		    v_ordenador.setMarca(rs.getString(V_ORDENADORES_MARCA));
 		}
 
-
 		return v_ordenador;
 
 	    } else {
@@ -339,6 +335,41 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	}
     }
 
+    @Override
+    public Marca obtenerMarca(Connection con, int id) {
+	Marca marca = new Marca();
+	try {
+	    CallableStatement cStmt = con.prepareCall(SP_OBTENER_MARCA_POR_ID);
+	    cStmt.setInt(1, id);
+	    boolean tieneSelect = cStmt.execute();
+
+	    if (tieneSelect == true) {
+		ResultSet rs = cStmt.getResultSet();
+
+		while (rs.next()) {
+		    System.out.println(rs.getInt(MARCAS_ID));
+		    System.out.println(rs.getString(MARCAS_MARCA));
+		    marca.setId(rs.getInt(MARCAS_ID));
+		    marca.setMarca(rs.getString(MARCAS_MARCA));
+		}
+
+		return marca;
+	    } else {
+		System.out.println("No se pudo obtener la marca con id:" + id);
+		System.out.println("El Stored procedure no tiene un RESULTSET");
+
+		return marca;
+	    }
+	} catch (SQLException e) {
+	    System.out.println("ERROR DE BD: CONSULTA");
+	    System.out.println("Error al obtener la marca con id:" + id);
+	    System.out.println(e.getMessage());
+
+	    return marca;
+	}
+    }
+
+    @Override
     public int eliminarMarca(Connection con, int id) {
 	try {
 
@@ -415,4 +446,5 @@ public class DB_Helper implements I_Conexion, I_Metodos {
 	    return new ArrayList<V_Ordenador>();
 	}
     }
+
 }
